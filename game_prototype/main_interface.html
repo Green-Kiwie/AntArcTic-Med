@@ -1,0 +1,57 @@
+<!-- <template id="my-box-template">
+    <style>
+      :host {
+        display: block; /* make sure the custom element starts on a new line */
+        margin-top: 10px;
+      }
+      .my-box {
+        border: 2px solid rgb(0, 0, 0);
+        padding: 20px;
+        border-radius: 10px;
+        width: 200px;
+        background-color: #f9f9f9;
+      }
+    </style>
+    <div class="my-box">
+      <slot></slot>
+    </div>
+</template> -->
+
+<template id="game-template">
+    <style>
+      .my-box {
+        border: 2px solid #4CAF50;
+        padding: 20px;
+        border-radius: 10px;
+        width: fit-content;
+        max-width: 400px;
+        background-color: #f9f9f9;
+        margin: 20px auto;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      }
+  
+      .game-container {
+        text-align: center;
+      }
+  
+      .button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+  
+      #timer {
+        font-size: 24px;
+        margin-top: 20px;
+      }
+    </style>
+  
+    <div class="my-box">
+      <div class="game-container">
+        <button class="button" id="begin-game">Begin Game</button>
+        <div id="timer">Time: 0s</div>
+        <div id="game-buttons-container"></div>
+      </div>
+    </div>
+  </template>
