@@ -1,22 +1,41 @@
 import logo from './logo.svg';
 import './App.css';
+import MatchCard from './components/switchitup/MatchCard';
+
+import { useState } from 'react';
 
 function App() {
+  const [currentTask, setCurrentTask] = useState("A");
+  const [rightCount, setRightCount] = useState(0);
+  const [wrongCount, setWrongCount] = useState(0);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <MatchCard currentTask={currentTask} 
+                   setRightCount={setRightCount} 
+                   setWrongCount={setWrongCount}
+                   cardValues={{imgPath: logo, tasks: ["A", "C"]}}/>
+        <MatchCard currentTask={currentTask}
+                   setRightCount={setRightCount}
+                   setWrongCount={setWrongCount}
+                   cardValues={{imgPath: logo, tasks: ["B", "C"]}}/>
+
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Right Count: {rightCount}, Wrong Count: {wrongCount};
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        <button onClick={() => {
+          setCurrentTask(currentTask === "A" ? "B" : "A");
+        }}>
+          Swap Current Task | From: {currentTask} to {currentTask === "A" ? "B" : "A"}
+        </button>
+
+        <button onClick={() => {
+          setCurrentTask("C");
+        }}>
+          Change current task to C
+        </button>
       </header>
     </div>
   );
