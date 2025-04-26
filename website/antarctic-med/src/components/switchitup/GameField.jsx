@@ -1,5 +1,10 @@
-export default function GameField() {
+export default function GameField({ setGameRunning }) {
     return (
-        <div></div>
+        <div>
+            <h1>Game Field</h1>
+            <button onClick={() => setGameRunning("metrics")}>
+                Show Metrics
+            </button>
+        </div>
     )
 }

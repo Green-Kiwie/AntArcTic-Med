@@ -1,6 +1,11 @@
-export default function StartScreen() {
+export default function StartScreen({ setGameRunning }) {
     return (
-        <div></div>
+        <div>
+            <h1>Start Screen</h1>
+            <button onClick={() => setGameRunning("game")}>
+                Start Game
+            </button>
+        </div>
     )
 }
 //Hello

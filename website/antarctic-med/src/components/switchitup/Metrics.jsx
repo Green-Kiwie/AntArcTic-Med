@@ -3,8 +3,13 @@
  */
 function sendMetrics() {}
 
-export default function Metrics() {
+export default function Metrics({ setGameRunning }) {
     return (
-        <div></div>
+        <div>
+            <h1>Metrics</h1>
+            <button onClick={() => setGameRunning("start")}>
+                Show Metrics
+            </button>
+        </div>
     )
 }
