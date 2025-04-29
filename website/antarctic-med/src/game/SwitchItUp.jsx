@@ -12,20 +12,6 @@ import StartScreen from "../components/switchitup/StartScreen";
 import GameField from "../components/switchitup/GameField";
 import Metrics from "../components/switchitup/Metrics";
 
-
-const metrics = {
-    "total_number_of_wrong_selections": 0,
-    "total_number_of_correct_selections": 0,
-    "time_from_start_of_game_to_end_of_game": 0,
-    "time_from_start_of_game_to_first_selection": 0,
-    "wrong_selection_correct_color_wrong_shape": 0,
-    "wrong_selection_correct_shape_wrong_color": 0,
-    "wrong_selection_wrong_shape_wrong_color": 0,
-    "wrong_selection_missed_a_selection": 0,
-    "mean_time_between_selections": 0,
-    "median_time_between_selections": 0,
-}
-
 /**
  * Randomly selects from our pool of tasks and creates a prompt.
  * @returns an array with those tasks and prompt.
@@ -46,8 +32,21 @@ function selectCardValues() {}
  * Three different main "screens": <StartScreen>, <GameField>, <Metrics>
  */
 export default function SwitchItUp() {
-    // Should have metrics...
-    // and then pass those metrics to the sendMetrics function when needed.
+
+    // Metrics useState
+    const [metrics, setMetrics] = useState({
+        total_number_of_wrong_selections: 0,
+        total_number_of_correct_selections: 0,
+        time_from_start_of_game_to_end_of_game: 0,
+        time_from_start_of_game_to_first_selection: 0,
+        wrong_selection_correct_color_wrong_shape: 0,
+        wrong_selection_correct_shape_wrong_color: 0,
+        wrong_selection_wrong_shape_wrong_color: 0,
+        wrong_selection_missed_a_selection: 0,
+        mean_time_between_selections: 0,
+        median_time_between_selections: 0,
+    });
+
     const [gameRunning, setGameRunning] = useState("start");
 
     return (
@@ -56,7 +55,7 @@ export default function SwitchItUp() {
             {gameRunning === "start" ? (
                 <StartScreen setGameRunning={setGameRunning} />
             ) : gameRunning === "game" ? (
-                <GameField setGameRunning={setGameRunning} metrics={metrics} />
+                <GameField setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} />
             ) : gameRunning === "metrics" ? (
                 <Metrics setGameRunning={setGameRunning} metrics={metrics} />
             ) : null}
