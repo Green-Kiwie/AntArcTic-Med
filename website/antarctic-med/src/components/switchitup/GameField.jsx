@@ -1,4 +1,4 @@
-export default function GameField({ setGameRunning }) {
+export default function GameField({ setGameRunning, metrics }) {
     return (
         <div>
             <h1>Game Field</h1>
