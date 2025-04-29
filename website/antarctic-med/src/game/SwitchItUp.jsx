@@ -32,9 +32,6 @@ function selectCardValues() {}
  * Three different main "screens": <StartScreen>, <GameField>, <Metrics>
  */
 export default function SwitchItUp() {
-
-    // Test comment
-
     // Should have metrics...
     // and then pass those metrics to the sendMetrics function when needed.
     const [gameRunning, setGameRunning] = useState("start");
