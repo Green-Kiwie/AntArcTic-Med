@@ -45,6 +45,8 @@ export default function SwitchItUp() {
         wrong_selection_missed_a_selection: 0,
         mean_time_between_selections: 0,
         median_time_between_selections: 0,
+        longest_streak: 0,
+        average_reaction_time: 0,
     });
 
     const [gameRunning, setGameRunning] = useState("start");
@@ -57,7 +59,7 @@ export default function SwitchItUp() {
             ) : gameRunning === "game" ? (
                 <GameField setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} />
             ) : gameRunning === "metrics" ? (
-                <Metrics setGameRunning={setGameRunning} metrics={metrics} />
+                <Metrics setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} />
             ) : null}
         </>
 
