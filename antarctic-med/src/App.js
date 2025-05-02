@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function Home() {
     return (
         <div className="page">
-            <h1 className="heading">AntArcTic-Med</h1>
+            <h1 className="heading">ANTArtiqc-Med</h1>
             <p>MCI development assessment through gamification</p>
 
             <div className="relative" style={{ width: '80%', paddingBottom: '50%', marginTop: '20px' }}>

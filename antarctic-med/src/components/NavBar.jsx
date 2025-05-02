@@ -18,7 +18,7 @@ export default function Navbar() {
                 <div className="flex-grow flex justify-center">
                     {location.pathname !== '/' && (
                         <h1 className="heading absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                            AntArcTic-Med
+                            ANTArtiqc-Med
                         </h1>
                     )}
                 </div>
