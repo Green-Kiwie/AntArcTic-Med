@@ -4,3 +4,7 @@ export default function StartScreen() {
     )
 }
 //Hello
+//COMMIT MESSAGE CHECKk
+
+//Pushing test
+//More testing
