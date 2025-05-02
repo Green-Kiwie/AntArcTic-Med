@@ -1,14 +1,55 @@
 import './App.css';
+import NavBar from './components/NavBar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+function Home() {
+    return (
+        <div className="page">
+            <h1 className="heading">AntArcTic-Med</h1>
+            <p>MCI development assessment through gamification</p>
+
+            <div className="relative" style={{ width: '80%', paddingBottom: '50%', marginTop: '20px' }}>
+                <div className="absolute top-0 left-0 w-full h-full bg-white" style={{
+                    padding:'40px', textAlign:'center', borderRadius: '25px'
+                }}>
+                    App coming soon!
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function About() {
+    return <div className="page">
+        <h1 className="heading">About Us</h1>
+        <div className="container">
+
+            Our purpose is to integrate artificial intelligence with medicine and pathology that seeks to transform
+            research, customized medicine, and diagnostic accuracy. We hope to close healthcare disparities by
+            democratizing access to professional medical services worldwide in order to enhance patient outcomes and
+            accelerate innovation in global healthcare delivery. We are committed to building AI-driven tools that are
+            ethical, inclusive, and clinically validated, while also enabling equitable care across diverse populations
+            and health systems.
+
+            We are currently developing an AI-driven system that leverages targeted gamification techniques to monitor and
+            enhance patient progression in Alzheimer’s care. Our platform uniquely integrates cognitive science, machine
+            learning, and user-optimized design to deliver interventions that are effective, engaging and accessible.
+            Together, we envision a future where artificial intelligence drives breakthrough medical progress,
+            revolutionizing the field of healthcare.
+        </div>
+    </div>;
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="text-5xl text-red-600">AntArcTic-Med</h1>
-          <p className="text-white">MCI development assessment through gamification</p>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <NavBar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
