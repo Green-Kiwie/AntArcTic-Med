@@ -12,19 +12,7 @@ import StartScreen from "../components/switchitup/StartScreen";
 import GameField from "../components/switchitup/GameField";
 import Metrics from "../components/switchitup/Metrics";
 
-/**
- * Randomly selects from our pool of tasks and creates a prompt.
- * @returns an array with those tasks and prompt.
- */
-function selectCurrentTask() {}
-
-
-/**
- * Randomly selects n card values from our pool of card values.
- * @returns an array of the selected card values.
- */
-function selectCardValues() {}
-
+// import TaskSelector from './game_logic_helpers';
 
 /**
  * Main component for the game Switch It Up!
