@@ -51,7 +51,7 @@ function About() {
                 <div className="text-center mt-20">
                     <h1 className="heading">Our Team</h1>
 
-                    Club lead name<br/><br/>
+                    Arnav Chandan (President)<br/>
                     Rigel de Souza (Treasurer)<br/>
                     Emma Chen (Social Media)<br/><br/>
 
