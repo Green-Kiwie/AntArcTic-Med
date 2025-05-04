@@ -230,3 +230,5 @@ function get_image_str(image_id){
     let colors_list = get_image_list();
     return colors_list[image_id];
 }
+
+export default selectCurrentTask;
