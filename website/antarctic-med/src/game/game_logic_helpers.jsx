@@ -62,7 +62,13 @@ export function get_image_str_from_id(card_id){
     return image_list[image_id];
 }
 
+export function get_color_id_from_id(id){
+    return Math.floor(id / 100);
+}
 
+export function get_image_id_from_id(id){
+    return id%100;
+}
 
 // //testing code for selectCurrentTask
 // const [prompt_id, prompt_message] = selectCurrentTask();
@@ -212,15 +218,6 @@ function generate_prompt_message(combination_choice, color_choice, image_choice)
 
 
 
-
-function get_color_id_from_id(id){
-    return Math.floor(id / 100);
-}
-
-function get_image_id_from_id(id){
-    return id%100;
-}
-
 function get_color_str(color_id){
     let colors_list = get_color_list();
     return colors_list[color_id];
@@ -230,5 +227,3 @@ function get_image_str(image_id){
     let colors_list = get_image_list();
     return colors_list[image_id];
 }
-
-export default selectCurrentTask;
