@@ -6,42 +6,44 @@
 
 import './App.css';
 import NavBar from './components/NavBar';
+import PageLayout from "./components/PageLayout";
 import Button from "./components/Button";
 import CenteredComponent from "./components/CenteredComponent";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function Home() {
     return (
-        <div className="page">
-            <h1 className="heading">ANTArtiqc-Med</h1>
-            <p>MCI development assessment through gamification</p>
+        <PageLayout heading="ANTArtiqc-Med">
+            <CenteredComponent>
+                <p>An artificial intelligence-based medicine platform</p>
+                <p>MCI development assessment through gamification</p>
 
-            <div className="container">Photos here</div>
-        </div>
+                <div className="container">Photos here</div>
+            </CenteredComponent>
+        </PageLayout>
     );
 }
 
 function Game() {
     return (
-        <div className="page">
-            <h1 className="heading">Game</h1>
-
-            <div className="relative" style={{ width: '80%', paddingBottom: '50%', marginTop: '20px' }}>
-                <div className="absolute top-0 left-0 w-full h-full bg-white" style={{
-                    padding:'40px', textAlign:'center', borderRadius: '25px'
-                }}>
-                    App coming soon!
+        <PageLayout heading="Game">
+            <CenteredComponent>
+                <div className="relative" style={{ width: '80%', paddingBottom: '50%', marginTop: '20px' }}>
+                    <div className="absolute top-0 left-0 w-full h-full bg-white" style={{
+                        padding:'40px', textAlign:'center', borderRadius: '25px'
+                    }}>
+                        App coming soon!
+                    </div>
                 </div>
-            </div>
-        </div>
+            </CenteredComponent>
+        </PageLayout>
     );
 }
 
 function About() {
     return (
-        <div className="page">
-            <h1 className="heading">About Us</h1>
-            <div className="container">
+        <PageLayout heading="About Us">
+            <CenteredComponent>
 
                 <p className="indent-8">Our purpose is to integrate artificial intelligence with medicine and pathology that seeks to transform
                 research, customized medicine, and diagnostic accuracy. We hope to close healthcare disparities by
@@ -79,23 +81,18 @@ function About() {
                 </div>
 
 
-            </div>
-        </div>
+            </CenteredComponent>
+        </PageLayout>
     );
 }
 
 function DevTesting() {
     return (
-        <div className="page">
-            <h1 className="heading">Testing</h1>
-            <div className="container">
-
-                <CenteredComponent>
-                    <Button content="Go to Homepage" link="/" />
-                </CenteredComponent>
-
-            </div>
-        </div>
+        <PageLayout heading="Testing">
+            <CenteredComponent>
+                <Button content="Go to Homepage" link="/" />
+            </CenteredComponent>
+        </PageLayout>
     );
 }
 

@@ -1,3 +1,7 @@
+// Standard button which takes in content (the text the button will hold) and link
+// Example use:
+// <Button content="Go to about" link="/about" />
+
 function Button({content, link}) {
     return (
         <a

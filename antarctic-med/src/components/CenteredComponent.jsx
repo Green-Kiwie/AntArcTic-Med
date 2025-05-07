@@ -7,7 +7,7 @@
 
 function CenteredComponent({ children }) {
     return (
-        <div className="flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
             {children}
         </div>
     );
