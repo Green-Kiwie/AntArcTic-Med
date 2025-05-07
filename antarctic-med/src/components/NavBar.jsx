@@ -1,5 +1,3 @@
-// Navigation bar for all pages
-
 import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
@@ -17,14 +15,15 @@ export default function Navbar() {
                         className="cursor-pointer"
                     />
                 </Link>
-                <div className="flex-grow flex justify-center">
+                <div className="flex-grow flex justify-center relative">
                     {location.pathname !== '/' && (
-                        <h1 className="heading absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <h1 className="heading absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+                            sm:relative sm:top-auto sm:left-auto sm:transform-none sm:text-center sm:translate-x-0 sm:translate-y-0">
                             ANTArtiqc-Med
                         </h1>
                     )}
                 </div>
-                <div className="ml-auto flex space-x-6 text-xl font-medium">
+                <div className="ml-auto flex space-x-6 text-xl" style={{ fontSize: "3vmin" }}>
                     <Link to="/" className="hover:text-blue-600">Home</Link>
                     <Link to="/game" className="hover:text-blue-600">Game</Link>
                     <Link to="/about" className="hover:text-blue-600">About</Link>

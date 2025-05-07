@@ -9,14 +9,17 @@ import NavBar from './components/NavBar';
 import PageLayout from "./components/PageLayout";
 import Button from "./components/Button";
 import CenteredComponent from "./components/CenteredComponent";
+import TextDisplay from "./components/TextDisplay";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function Home() {
     return (
         <PageLayout heading="ANTArtiqc-Med">
             <CenteredComponent>
-                <p>An artificial intelligence-based medicine platform</p>
-                <p>MCI development assessment through gamification</p>
+                <TextDisplay>
+                    <p>An artificial intelligence-based medicine platform</p>
+                    <p>MCI development assessment through gamification</p>
+                </TextDisplay>
 
                 <div className="container">Photos here</div>
             </CenteredComponent>
@@ -44,42 +47,43 @@ function About() {
     return (
         <PageLayout heading="About Us">
             <CenteredComponent>
+                <TextDisplay>
 
-                <p className="indent-8">Our purpose is to integrate artificial intelligence with medicine and pathology that seeks to transform
-                research, customized medicine, and diagnostic accuracy. We hope to close healthcare disparities by
-                democratizing access to professional medical services worldwide in order to enhance patient outcomes and
-                accelerate innovation in global healthcare delivery. We are committed to building AI-driven tools that are
-                ethical, inclusive, and clinically validated, while also enabling equitable care across diverse populations
-                and health systems.</p><br/>
+                    <p className="indent-8">Our purpose is to integrate artificial intelligence with medicine and pathology that seeks to transform
+                    research, customized medicine, and diagnostic accuracy. We hope to close healthcare disparities by
+                    democratizing access to professional medical services worldwide in order to enhance patient outcomes and
+                    accelerate innovation in global healthcare delivery. We are committed to building AI-driven tools that are
+                    ethical, inclusive, and clinically validated, while also enabling equitable care across diverse populations
+                    and health systems.</p><br/>
 
-                <p className="indent-8">We are currently developing an AI-driven system that leverages targeted gamification techniques to monitor and
-                enhance patient progression in Alzheimer’s care. Our platform uniquely integrates cognitive science, machine
-                learning, and user-optimized design to deliver interventions that are effective, engaging and accessible.
-                Together, we envision a future where artificial intelligence drives breakthrough medical progress,
-                revolutionizing the field of healthcare.</p>
+                    <p className="indent-8">We are currently developing an AI-driven system that leverages targeted gamification techniques to monitor and
+                    enhance patient progression in Alzheimer’s care. Our platform uniquely integrates cognitive science, machine
+                    learning, and user-optimized design to deliver interventions that are effective, engaging and accessible.
+                    Together, we envision a future where artificial intelligence drives breakthrough medical progress,
+                    revolutionizing the field of healthcare.</p>
 
-                <div className="text-center mt-20">
-                    <h1 className="heading">Our Team</h1>
+                    <div className="text-center mt-20">
+                        <h1 className="heading">Our Team</h1>
 
-                    Arnav Chandan (President)<br/>
-                    Rigel de Souza (Treasurer)<br/>
-                    Emma Chen (Social Media)<br/><br/>
+                        Arnav Chandan (President)<br/>
+                        Rigel de Souza (Treasurer)<br/>
+                        Emma Chen (Social Media)<br/><br/>
 
-                    Project<br/>
-                    Kierann (Project lead)<br/><br/>
+                        Project<br/>
+                        Kierann (Project lead)<br/><br/>
 
-                    Website Team<br/>
-                    Ashley Yee (Lead)<br/>
-                    Rigel de Souza<br/><br/>
+                        Website Team<br/>
+                        Ashley Yee (Lead)<br/>
+                        Rigel de Souza<br/><br/>
 
-                    Game Team<br/>
-                    Jeremiah Lillion (Lead)<br/>
-                    Anish Venkatesalu<br/>
-                    Logan Mifflin<br/>
-                    Siddharth Sundar<br/>
-                    Vaibhav Satish<br/>
-                </div>
-
+                        Game Team<br/>
+                        Jeremiah Lillion (Lead)<br/>
+                        Anish Venkatesalu<br/>
+                        Logan Mifflin<br/>
+                        Siddharth Sundar<br/>
+                        Vaibhav Satish<br/>
+                    </div>
+                </TextDisplay>
 
             </CenteredComponent>
         </PageLayout>
