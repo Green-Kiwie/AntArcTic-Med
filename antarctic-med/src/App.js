@@ -1,5 +1,13 @@
+// Each page is rendered by a different function and routing by React Router
+// This eliminates the need for multiple .js files for simple pages
+// Routing is at the bottom under App(); new links must be added to the routing for a direct URL to work
+// Such as inputting /about manually into the URL bar
+// For new pages that have buttons in the NavBar, must also add the routers in the NavBar component
+
 import './App.css';
 import NavBar from './components/NavBar';
+import Button from "./components/Button";
+import CenteredComponent from "./components/CenteredComponent";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function Home() {
@@ -76,6 +84,21 @@ function About() {
     );
 }
 
+function DevTesting() {
+    return (
+        <div className="page">
+            <h1 className="heading">Testing</h1>
+            <div className="container">
+
+                <CenteredComponent>
+                    <Button content="Go to Homepage" link="/" />
+                </CenteredComponent>
+
+            </div>
+        </div>
+    );
+}
+
 function App() {
     return (
         <Router>
@@ -84,6 +107,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/game" element={<Game />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/testing" element={<DevTesting />} />
             </Routes>
         </Router>
     );
