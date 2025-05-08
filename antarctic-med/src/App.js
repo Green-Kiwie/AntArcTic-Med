@@ -49,18 +49,22 @@ function About() {
             <CenteredComponent>
                 <TextDisplay>
 
-                    <p className="indent-8">Our purpose is to integrate artificial intelligence with medicine and pathology that seeks to transform
-                    research, customized medicine, and diagnostic accuracy. We hope to close healthcare disparities by
-                    democratizing access to professional medical services worldwide in order to enhance patient outcomes and
-                    accelerate innovation in global healthcare delivery. We are committed to building AI-driven tools that are
-                    ethical, inclusive, and clinically validated, while also enabling equitable care across diverse populations
-                    and health systems.</p><br/>
+                    <p className="indent-8">Anteaters for Artificial Intelligence and Quantum Computing in Medicine is a student-run organization 
+                                            made for students with interest in the field of healthcare. Our purpose is to integrate artificial intelligence 
+                                            with medicine and pathology that seeks to transform customized medicine and diagnostic accuracy. 
+                                            ANTartiqc Med strives to close healthcare disparities by democratizing access to professional medical 
+                                            services worldwide in order to enhance patient outcomes and accelerate innovation in global healthcare 
+                                            delivery. We are committed to building AI-driven tools that are ethical, inclusive, and clinically validated, 
+                                            while also enabling equitable care across diverse populations and health systems.
+</p><br/>
 
-                    <p className="indent-8">We are currently developing an AI-driven system that leverages targeted gamification techniques to monitor and
-                    enhance patient progression in Alzheimer’s care. Our platform uniquely integrates cognitive science, machine
-                    learning, and user-optimized design to deliver interventions that are effective, engaging and accessible.
-                    Together, we envision a future where artificial intelligence drives breakthrough medical progress,
-                    revolutionizing the field of healthcare.</p>
+                    <p className="indent-8">Our team is currently developing a program called the Alois Machine-Memory Assisted Initiative, an 
+                                            AI-driven system that leverages targeted gamification techniques to monitor and enhance patient 
+                                            progression in Alzheimer’s care. Alois MMAI’s platform uniquely integrates cognitive science, machine 
+                                            learning, and user-optimized design to deliver interventions that are effective, engaging and accessible. 
+                                            Together, we envision a future where artificial intelligence drives breakthrough medical progress, 
+                                            revolutionizing the field of healthcare. 
+</p>
 
                     <div className="text-center mt-20">
                         <h1 className="heading">Our Team</h1>
@@ -70,7 +74,7 @@ function About() {
                         Emma Chen (Social Media)<br/><br/>
 
                         Project<br/>
-                        Kierann (Project lead)<br/><br/>
+                        Kierann (Project Lead)<br/><br/>
 
                         Website Team<br/>
                         Ashley Yee (Lead)<br/>
