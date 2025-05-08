@@ -1,5 +1,6 @@
 import { useState } from "react";
 import  { selectCurrentTask, selectCardValues, get_color_id_from_id, get_image_id_from_id, get_color_str_from_id, get_image_str_from_id } from "../../game/game_logic_helpers";
+import Designed_Button from "../../global_helpers/Button"
 
 export default function GameField({ setGameRunning, setMetrics }) {
     // Matrix Size 
@@ -13,6 +14,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
 
     {/* example of updating metrics */}
     function handleButtonClick() {
+        console.log('Button clicked');
         setMetrics(prev => ({
             ...prev,
             total_number_of_correct_selections: prev.total_number_of_correct_selections + 1
@@ -58,11 +60,11 @@ export default function GameField({ setGameRunning, setMetrics }) {
                     result += temp;
                 }
                 // Button description
+                let onClickParameters = {} //update this for metrics tracking
                 const labelText = result; 
                 buttonLabels.push(
-                    <button key={i}>
-                        {labelText}
-                    </button>
+                    <Designed_Button key={i} content={labelText} onClick={handleButtonClick} onClickParameters={onClickParameters}>
+                    </Designed_Button>
                 ); // Creates an HTML button
                 i++;
                 result = '';
