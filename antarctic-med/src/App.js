@@ -11,6 +11,7 @@ import Button from "./components/Button";
 import CenteredComponent from "./components/CenteredComponent";
 import TextDisplay from "./components/TextDisplay";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SwitchItUp from './game/SwitchItUp';
 
 function Home() {
     return (
@@ -35,7 +36,7 @@ function Game() {
                     <div className="absolute top-0 left-0 w-full h-full bg-white" style={{
                         padding:'40px', textAlign:'center', borderRadius: '25px'
                     }}>
-                        App coming soon!
+                        <SwitchItUp />
                     </div>
                 </div>
             </CenteredComponent>
