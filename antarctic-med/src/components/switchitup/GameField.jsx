@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import  { selectCurrentTask, selectCardValues, get_color_id_from_id, get_image_id_from_id, get_color_str_from_id, get_image_str_from_id } from "../../game/game_logic_helpers";
 import Designed_Button from "../../global_helpers/Button"
 
@@ -20,17 +20,20 @@ export default function GameField({ setGameRunning, setMetrics }) {
             total_number_of_correct_selections: prev.total_number_of_correct_selections + 1
         }));
     }
+
+
     // Updates the GameState when the start button is clicked. Will also implement the game state working when user clicks all answers
     function updateGameState() {
         let currentTask = selectCurrentTask();
-        setPromptId(currentTask[0]);
+        setPromptId(currentTask[0]); // Use States do not update instantly 
         setPromptMessage(currentTask[1]);
-        renderCards();
+        // console.log(promptMessage, promptId); // Prompt Message is aligned here
+        renderCards(currentTask[0]);
     }
 
     // Updates UseState to display the card_matrix. Will also implement correct cards in future commit
-    function renderCards() {
-        let [card_matrix, correct_cards] = selectCardValues(promptId, rows, columns);
+    function renderCards(prompt) {
+        let [card_matrix, correct_cards] = selectCardValues(prompt, rows, columns);
         setCardMatrix(card_matrix);
         
     }
@@ -88,7 +91,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
             </button>
 
             <button onClick={updateGameState}>Start Game</button>
-            <h2>{promptMessage}</h2>
+            <h2>{promptMessage}</h2>    
 
             {/* <ul className="space-y-2">
                 {Object.entries(selectCardValues(promptId, rows, columns)).map(([key, value]) => (
