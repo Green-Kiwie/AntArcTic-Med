@@ -1,4 +1,6 @@
 export default function StartScreen({ setGameRunning }) {
+
+
     return (
         <div>
             <h1>Start Screen</h1>
