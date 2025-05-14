@@ -1,6 +1,7 @@
 import { useState } from "react";
 import  { selectCurrentTask, selectCardValues, get_color_id_from_id, get_image_id_from_id, get_color_str_from_id, get_image_str_from_id } from "../../game/game_logic_helpers";
 import Designed_Button from "../../global_helpers/Button"
+import GameTimer from "../../global_helpers/GameTimer"
 
 export default function GameField({ setGameRunning, setMetrics }) {
     // Matrix Size 
@@ -111,9 +112,12 @@ export default function GameField({ setGameRunning, setMetrics }) {
                 add 1 to total number of correct selections
             </button>
 
+            {<GameTimer timeLimitInSeconds = {120} onEnd={() => {setGameRunning("metrics")}}/>}
+
             <h2>{promptMessage === '' ? updateGameState() : promptMessage}</h2>    
 
             {cardMatrix.length > 0 && <RenderCardMatrix card_matrix={cardMatrix} />}
+
 
             <button onClick={() => setGameRunning("metrics")}>
                 Show Metrics
