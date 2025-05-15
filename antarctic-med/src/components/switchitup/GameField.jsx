@@ -24,9 +24,17 @@ export default function GameField({ setGameRunning, setMetrics }) {
         console.log('Button clicked');
         setMetrics(prev => ({
             ...prev,
-            total_number_of_correct_selections: prev.total_number_of_correct_selections + 1
+            total_number_of_correct_selections: prev.total_number_of_correct_selections + 1,
         }));
     }
+
+    const update_wrong_selection = () => {
+        console.log('Wrong button clicked');
+        setMetrics(prev => ({
+            ...prev,
+            wrong_selection_missed_a_selection : prev.wrong_selection_missed_a_selection + 1,
+        }));
+    };
 
     function addButtonToClickedSet(buttonId){
         setClickedButtons(prev => new Set(prev).add(buttonId));
@@ -49,6 +57,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
         }
         else{
             setRoundHasMistake(true);
+            update_wrong_selection();
         }
 
         if (correct === correctCards.length) {
