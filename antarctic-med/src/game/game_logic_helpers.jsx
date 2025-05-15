@@ -12,8 +12,11 @@ function get_image_list(){ //change these values to change image options
 }
 
 function get_color_list(){ //change these values to change color options
-    return {1: "red", 2: "blue", 3: "green"};//0 will be reserved for if unselected
+    return {1: ["red", "bg-red-300", "hover:bg-red-600"],
+            2: ["blue", "bg-blue-300", "hover:bg-blue-600"],
+            3: ["green", "bg-green-300", "hover:bg-green-600"]};//0 will be reserved for if unselected 1: red, 2: blue, 3: green
 }
+
 
 /**
  * Randomly selects from our pool of tasks and creates a prompt.
@@ -53,7 +56,19 @@ export function selectCardValues(prompt_id, rows, columns, number_of_correct = -
 export function get_color_str_from_id(card_id){
     let color_id = get_color_id_from_id(card_id);
     let colors_list = get_color_list();
-    return colors_list[color_id];
+    return colors_list[color_id][0];
+}
+
+export function get_color_code_from_id(card_id){
+    let color_id = get_color_id_from_id(card_id);
+    let colors_list = get_color_list();
+    return colors_list[color_id][1];
+}
+
+export function get_hover_color_code_from_id(card_id){
+    let color_id = get_color_id_from_id(card_id);
+    let colors_list = get_color_list();
+    return colors_list[color_id][2];
 }
 
 export function get_image_str_from_id(card_id){
@@ -220,7 +235,7 @@ function generate_prompt_message(combination_choice, color_choice, image_choice)
 
 function get_color_str(color_id){
     let colors_list = get_color_list();
-    return colors_list[color_id];
+    return colors_list[color_id][0];
 }
 
 function get_image_str(image_id){

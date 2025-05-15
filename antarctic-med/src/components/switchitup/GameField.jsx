@@ -1,5 +1,5 @@
 import { useState } from "react";
-import  { selectCurrentTask, selectCardValues, get_color_id_from_id, get_image_id_from_id, get_color_str_from_id, get_image_str_from_id } from "../../game/game_logic_helpers";
+import  { selectCurrentTask, selectCardValues, get_color_id_from_id, get_image_id_from_id, get_color_code_from_id, get_image_str_from_id, get_hover_color_code_from_id} from "../../game/game_logic_helpers";
 import Designed_Button from "../../global_helpers/Button"
 import GameTimer from "../../global_helpers/GameTimer"
 
@@ -71,25 +71,20 @@ export default function GameField({ setGameRunning, setMetrics }) {
         let buttonLabels = [];
         for (let row = 0; row < card_matrix.length; row++) {
             for (let col = 0; col < card_matrix[0].length; col++) {
+                
                 image_id = get_image_id_from_id(card_matrix[row][col]);
                 color_id = get_color_id_from_id(card_matrix[row][col]);
-                if (color_id > 0) {
-                    let color_temp = get_color_str_from_id(card_matrix[row][col]);
 
-                    result += color_temp;
-                }
-                if (color_id > 0 && image_id > 0) {
-                    result += ' and ';
-                }
-                if (image_id > 0) {
-                    let temp = get_image_str_from_id(card_matrix[row][col]);
-                    result += temp;
-                }
                 // Button description
                 let onClickParameters = {} //update this for metrics tracking
-                const labelText = result; 
+                const labelText = get_image_str_from_id(card_matrix[row][col]);
                 buttonLabels.push(
-                    <Designed_Button id = {[row, col]} key={row + ' ' + col} content={labelText} onClick={markCorrectClick} onClickParameters={onClickParameters}>
+                    <Designed_Button id = {[row, col]} key={row + ' ' + col} 
+                                    content={labelText} onClick={markCorrectClick} 
+                                    onClickParameters={onClickParameters}
+                                    colorClass={get_color_code_from_id(card_matrix[row][col])}
+                                    hoverColorClass={get_hover_color_code_from_id(card_matrix[row][col])}
+                    >
                     </Designed_Button>
                 ); // Creates an HTML button
                 result = '';
@@ -112,7 +107,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
                 add 1 to total number of correct selections
             </button>
 
-            {<GameTimer timeLimitInSeconds = {120} onEnd={() => {setGameRunning("metrics")}}/>}
+            {<GameTimer timeLimitInSeconds = {60} onEnd={() => {setGameRunning("metrics")}}/>}
 
             <h2>{promptMessage === '' ? updateGameState() : promptMessage}</h2>    
 
