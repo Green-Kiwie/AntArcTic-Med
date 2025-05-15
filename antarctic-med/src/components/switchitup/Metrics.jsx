@@ -1,13 +1,10 @@
-import { useEffect } from "react";
-
-
 /**
  * Sends the metrics.
  */
 function sendMetrics() {}
 
 
-export default function Metrics({ setGameRunning, metrics, setMetrics }) {
+export default function Metrics({ setGameRunning, metrics }) {
     /*
     Need to determine 3 different types
     1. longest streak of accurate presses (measure accuracy)

@@ -15,6 +15,9 @@ export default function GameField({ setGameRunning, setMetrics }) {
     const [numOfCorrect, setNumOfCorrect] = useState(0);
     const [clickedButtons, setClickedButtons] = useState(new Set());
 
+    const [currentStreak, setCurrentStreak] = useState(0);
+    const [maxStreak, setMaxStreak] = useState(0);
+    const [roundHasMistake, setRoundHasMistake] = useState(false);
 
     /* example of updating metrics */
     function update_metrics() {
@@ -44,8 +47,19 @@ export default function GameField({ setGameRunning, setMetrics }) {
             update_metrics();
             console.log('Correct!');
         }
+        else{
+            setRoundHasMistake(true);
+        }
 
         if (correct === correctCards.length) {
+            if(roundHasMistake){ setCurrentStreak(0); }
+            else{
+                setCurrentStreak(prev => {
+                const newStreak = prev + 1;
+                setMaxStreak(max => Math.max(max, newStreak));
+                return newStreak;
+                });
+            }
             console.log("Done!");
             resetGameState();
             setNumOfCorrect(0);
@@ -63,6 +77,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
         // Use States do not update instantly 
         setPromptMessage(currentTask[1]);
         renderCards(currentTask[0]);
+        setRoundHasMistake(false);
     }
 
     // Updates UseState to display the card_matrix. Will also implement correct cards in future commit
@@ -121,7 +136,13 @@ export default function GameField({ setGameRunning, setMetrics }) {
             {cardMatrix.length > 0 && <RenderCardMatrix card_matrix={cardMatrix} />}
 
 
-            <button onClick={() => setGameRunning("metrics")}>
+            <button onClick={() => {
+                setMetrics(prev => ({
+                    ...prev,
+                    longest_streak: maxStreak
+                }));
+                setGameRunning("metrics");
+            }}>
                 Show Metrics
             </button>
         </div>
