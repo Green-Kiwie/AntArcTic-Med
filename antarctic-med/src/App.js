@@ -34,7 +34,7 @@ function Game() {
             <CenteredComponent>
                 <div className="relative" style={{ width: '80%', paddingBottom: '50%', marginTop: '20px' }}>
                     <div className="absolute top-0 left-0 w-full h-full bg-white" style={{
-                        padding:'40px', textAlign:'center', borderRadius: '25px'
+                        padding:'40px', textAlign:'center', borderRadius: '25px', overflowY: 'auto',
                     }}>
                         <SwitchItUp />
                     </div>
