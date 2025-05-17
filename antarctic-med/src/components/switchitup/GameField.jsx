@@ -28,18 +28,19 @@ export default function GameField({ setGameRunning, setMetrics }) {
         }));
     }
 
-    function update_wrong_selection(event){
+    function update_wrong_selection(clickedRow, clickedCol){
+        const ClickedID = cardMatrix[clickedRow][clickedCol];
         console.log('Wrong button clicked');
-        wrong_correct_color_wrong_shape = 0;
-        wrong_incorrect_color_right_shape = 0;
-        wrong = 0;
-        if (correctDetails.some(card => card.color == get_color_code_from_id(event.target.id)) && correctDetails.some(card => card.shape != get_image_str_from_id(event))){
+        let wrong_correct_color_wrong_shape = 0;
+        let wrong_incorrect_color_right_shape = 0;
+        let wrong = 0;
+        if (correctDetails.some(card => card.color === get_color_code_from_id(ClickedID)) && correctDetails.some(card => card.shape !== get_image_str_from_id(ClickedID))){
             wrong_correct_color_wrong_shape=1;
         }
-        if (correctDetails.some(card => card.color != get_color_code_from_id(event.target.id)) && correctDetails.some(card => card.shape != get_image_str_from_id(event))){
+        if (correctDetails.some(card => card.color !== get_color_code_from_id(ClickedID)) && correctDetails.some(card => card.shape !== get_image_str_from_id(ClickedID))){
             wrong=1;
         }
-        if (correctDetails.some(card => card.color != get_color_code_from_id(event.target.id)) && correctDetails.some(card => card.shape == get_image_str_from_id(event))){
+        if (correctDetails.some(card => card.color !== get_color_code_from_id(ClickedID)) && correctDetails.some(card => card.shape === get_image_str_from_id(ClickedID))){
             wrong_incorrect_color_right_shape=1;
         }
         setMetrics(prev => ({
@@ -80,7 +81,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
         }
         else{
             setRoundHasMistake(true);
-            update_wrong_selection(event);
+            update_wrong_selection(clickedRow, clickedCol);
         }
 
         if (correct === correctCards.length) {
