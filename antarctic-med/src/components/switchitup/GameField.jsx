@@ -4,6 +4,7 @@ import Designed_Button from "../../global_helpers/Button"
 import GameTimer from "../../global_helpers/GameTimer"
 
 export default function GameField({ setGameRunning, setMetrics }) {
+    const GAME_TIME_LIMIT = 120;
     // Matrix Size 
     const rows = 3;
     const columns = 4;
@@ -163,7 +164,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
             <button id = 'update-metrics' onClick={handleButtonClick}>
                 add 1 to total number of correct selections
             </button> */}
-            {<GameTimer timeLimitInSeconds = {60} onEnd={() => {setGameRunning("metrics")}}/>}
+            {<GameTimer timeLimitInSeconds = {GAME_TIME_LIMIT} onEnd={() => {setGameRunning("metrics")}}/>}
 
             <h2>{promptMessage === '' ? resetGameState() : promptMessage}</h2>    
 
@@ -172,7 +173,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
                 setMetrics(prev => ({
                     ...prev,
                     longest_streak: maxStreak,
-                    time_from_start_of_game_to_end_of_game: prev.time_from_start_of_game_to_end_of_game+60
+                    time_from_start_of_game_to_end_of_game: prev.time_from_start_of_game_to_end_of_game+GAME_TIME_LIMIT
                 }));
                 setGameRunning("metrics");
             }}>
