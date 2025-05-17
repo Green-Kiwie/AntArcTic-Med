@@ -16,6 +16,7 @@ export default function Metrics({ setGameRunning, metrics }) {
     const displayMetrics = {
         'Longest Streak' : metrics.longest_streak || 0,
         'Missed Presses' : metrics.wrong_selection_missed_a_selection,
+        'Correct Selections':metrics.total_number_of_correct_selections,
         'Average Reaction Time (in ms)' : metrics.total_number_of_correct_selections ? (metrics.time_from_start_of_game_to_end_of_game / metrics.total_number_of_correct_selections) : 0,
     }
 

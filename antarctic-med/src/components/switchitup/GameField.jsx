@@ -4,7 +4,7 @@ import Designed_Button from "../../global_helpers/Button"
 import GameTimer from "../../global_helpers/GameTimer"
 
 export default function GameField({ setGameRunning, setMetrics }) {
-    const GAME_TIME_LIMIT = 120;
+    const GAME_TIME_LIMIT = 20;
     // Matrix Size 
     const rows = 3;
     const columns = 4;
@@ -173,7 +173,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
                 setMetrics(prev => ({
                     ...prev,
                     longest_streak: maxStreak,
-                    time_from_start_of_game_to_end_of_game: prev.time_from_start_of_game_to_end_of_game+GAME_TIME_LIMIT
+                    time_from_start_of_game_to_end_of_game: GAME_TIME_LIMIT
                 }));
                 setGameRunning("metrics");
             }}>
