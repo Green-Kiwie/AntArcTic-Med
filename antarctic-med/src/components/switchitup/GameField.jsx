@@ -28,13 +28,36 @@ export default function GameField({ setGameRunning, setMetrics }) {
         }));
     }
 
-    const update_wrong_selection = () => {
+    function update_wrong_selection(event){
         console.log('Wrong button clicked');
+        wrong_correct_color_wrong_shape = 0;
+        wrong_incorrect_color_right_shape = 0;
+        wrong = 0;
+        if (correctDetails.some(card => card.color == get_color_code_from_id(event.target.id)) && correctDetails.some(card => card.shape != get_image_str_from_id(event))){
+            wrong_correct_color_wrong_shape=1;
+        }
+        if (correctDetails.some(card => card.color != get_color_code_from_id(event.target.id)) && correctDetails.some(card => card.shape != get_image_str_from_id(event))){
+            wrong=1;
+        }
+        if (correctDetails.some(card => card.color != get_color_code_from_id(event.target.id)) && correctDetails.some(card => card.shape == get_image_str_from_id(event))){
+            wrong_incorrect_color_right_shape=1;
+        }
         setMetrics(prev => ({
             ...prev,
-            wrong_selection_missed_a_selection : prev.wrong_selection_missed_a_selection + 1,
+            total_number_of_wrong_selections : prev.total_number_of_wrong_selections + 1,
+            wrong_selection_correct_color_wrong_shape : prev.wrong_selection_correct_color_wrong_shape + wrong_correct_color_wrong_shape,
+            wrong_selection_correct_shape_wrong_color : prev.wrong_selection_correct_shape_wrong_color + wrong_incorrect_color_right_shape,
+            wrong_selection_wrong_shape_wrong_color : prev.wrong_selection_wrong_shape_wrong_color + wrong
         }));
     };
+
+    const correctDetails = correctCards.map(([row, col]) => {
+        const id = cardMatrix[row][col];
+        return {
+            color: get_color_code_from_id(id),
+            shape: get_image_str_from_id(id)
+        };
+    });
 
     function addButtonToClickedSet(buttonId){
         setClickedButtons(prev => new Set(prev).add(buttonId));
@@ -57,7 +80,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
         }
         else{
             setRoundHasMistake(true);
-            update_wrong_selection();
+            update_wrong_selection(event);
         }
 
         if (correct === correctCards.length) {
