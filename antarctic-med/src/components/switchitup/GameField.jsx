@@ -74,8 +74,8 @@ export default function GameField({ setGameRunning, setMetrics }) {
             setNumOfCorrect(0);
         }
 
-        event.target.style.backgroundColor = "white";
-        event.target.style.color = "white";
+        event.target.style.visibility = "hidden";
+
         
     }
 
@@ -112,10 +112,11 @@ export default function GameField({ setGameRunning, setMetrics }) {
                 const labelText = get_image_str_from_id(card_matrix[row][col]);
                 buttonLabels.push(
                     <Designed_Button id = {[row, col]} key={row + ' ' + col} 
-                                    content={labelText} onClick={handleButtonClick} 
+                                    content={labelText} onClick={handleButtonClick}
                                     onClickParameters={onClickParameters}
+                                    disable = {isClicked ? true : false}
                                     colorClass={isClicked ? "bg-white text-white" : get_color_code_from_id(card_matrix[row][col])}
-                                    hoverColorClass={get_hover_color_code_from_id(card_matrix[row][col])}
+                                    hoverColorClass={isClicked ? null : get_hover_color_code_from_id(card_matrix[row][col])}
                     >
                     </Designed_Button>
                 ); // Creates an HTML button
