@@ -46,6 +46,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
         setMetrics(prev => ({
             ...prev,
             total_number_of_wrong_selections : prev.total_number_of_wrong_selections + 1,
+            wrong_selection_missed_a_selection : prev.wrong_selection_missed_a_selection + 1,
             wrong_selection_correct_color_wrong_shape : prev.wrong_selection_correct_color_wrong_shape + wrong_correct_color_wrong_shape,
             wrong_selection_correct_shape_wrong_color : prev.wrong_selection_correct_shape_wrong_color + wrong_incorrect_color_right_shape,
             wrong_selection_wrong_shape_wrong_color : prev.wrong_selection_wrong_shape_wrong_color + wrong
@@ -162,23 +163,22 @@ export default function GameField({ setGameRunning, setMetrics }) {
             <button id = 'update-metrics' onClick={handleButtonClick}>
                 add 1 to total number of correct selections
             </button> */}
-
             {<GameTimer timeLimitInSeconds = {60} onEnd={() => {setGameRunning("metrics")}}/>}
 
             <h2>{promptMessage === '' ? resetGameState() : promptMessage}</h2>    
 
             {cardMatrix.length > 0 && <RenderCardMatrix card_matrix={cardMatrix} />}
-
-
             <button onClick={() => {
                 setMetrics(prev => ({
                     ...prev,
-                    longest_streak: maxStreak
+                    longest_streak: maxStreak,
+                    time_from_start_of_game_to_end_of_game: prev.time_from_start_of_game_to_end_of_game+60
                 }));
                 setGameRunning("metrics");
             }}>
                 Show Metrics
             </button>
+
         </div>
     )
 }
