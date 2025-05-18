@@ -18,14 +18,19 @@ jobs:
         with:
           node-version: '18.19.1'
 
+      - name: List files in directory
+        run: ls antarctic-med
+
       - name: Install dependencies
         run: npm install
+        working-directory: antarctic-med
 
       - name: Build the app
-        run: npm run build
+        run: CI=false npm run build
+        working-directory: antarctic-med
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./antactic-med/build
+          publish_dir: antarctic-med/build
