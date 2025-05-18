@@ -1,12 +1,13 @@
+import Designed_Button from "../../global_helpers/Button"
+
 export default function StartScreen({ setGameRunning }) {
 
 
     return (
         <div>
-            <h1>Start Screen</h1>
-            <button onClick={() => setGameRunning("game")}>
-                Start Game
-            </button>
+            <Designed_Button 
+                onClick={() => setGameRunning("game")} content={"Start Game"} >
+            </Designed_Button>
             <p>
                 Switch it Up! You are presented with a series of simple tasks; color matching, shape sorting,
                 animal counting, but the rules of the game change periodically, which requires them to switch mental
