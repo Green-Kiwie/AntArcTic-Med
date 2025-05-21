@@ -1,5 +1,5 @@
 /**
- * Sends the metrics.
+ * Sends the metrics. A comment
  */
 function sendMetrics() {}
 
