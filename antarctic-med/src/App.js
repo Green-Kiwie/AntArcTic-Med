@@ -22,7 +22,15 @@ function Home() {
                     <p>MCI development assessment through gamification</p>
                 </TextDisplay>
 
-                <div className="container">Photos here</div>
+                <div className="container">
+                    <div class="grid grid-cols-4 gap-4">  
+                        <div>
+                            <img src="/group_photo1.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                            <img src="/sample_1.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                            <img src="/sample_2.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                            <img src="/sample_3.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        </div>
+                    </div></div>
             </CenteredComponent>
         </PageLayout>
     );
