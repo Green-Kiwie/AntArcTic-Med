@@ -113,6 +113,19 @@ function DevTesting() {
     );
 }
 
+///GURNOOR MESSING AROUND
+function MetricsPage() {
+	return (
+		<PageLayout heading="METRICS">
+			<CenteredComponent>
+				<TextDisplay>
+					<p>This is the new page with just some text! Do you like text</p>
+				</TextDisplay>
+			</CenteredComponent>
+		</PageLayout>
+	);
+}
+///GURNOOR MESSING AROUNG
 function App() {
     return (
         <Router>
@@ -122,6 +135,9 @@ function App() {
                 <Route path="/game" element={<Game />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/testing" element={<DevTesting />} />
+                
+                <Route path="/metrics" element={<MetricsPage />} />
+
             </Routes>
         </Router>
     );
