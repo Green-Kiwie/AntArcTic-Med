@@ -25,10 +25,10 @@ function Home() {
                 <div>
                     <div className="object-cover">
                         
-                        <img src="/group_photo1.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
-                        <img src="/sample_1.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
-                        <img src="/sample_2.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
-                        <img src="/sample_3.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        <img src={`${process.env.PUBLIC_URL}/group_photo1.jpg`} alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        <img src={`${process.env.PUBLIC_URL}/sample_1.jpg`} alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        <img src={`${process.env.PUBLIC_URL}/sample_2.jpg`} alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        <img src={`${process.env.PUBLIC_URL}/sample_3.jpg`} alt = "ANTarctiqc Med" style={{width: '100%'}} />
                         
                     </div>
                 </div>

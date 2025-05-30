@@ -8,7 +8,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between p-4 max-w-screen-2xl mx-auto">
                 <Link to="/">
                     <img
-                        src="/org_logo2.png"
+                        src={`${process.env.PUBLIC_URL}/org_logo2.png`}
                         alt="Logo"
                         width={35}
                         height={35}
