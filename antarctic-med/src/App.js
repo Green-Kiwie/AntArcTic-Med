@@ -22,8 +22,8 @@ function Home() {
                     <p>MCI development assessment through gamification</p>
                 </TextDisplay>
 
-                <div className="container">
-                    <div class="grid grid-cols-4 gap-4">  
+                <div>
+                    <div>
                         <div>
                             <img src="/group_photo1.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
                             <img src="/sample_1.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
