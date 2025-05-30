@@ -119,7 +119,9 @@ function MetricsPage() {
 		<PageLayout heading="Metrics">
 			<CenteredComponent>
 				<TextDisplay>
-					<p>This is the new page with just some text! Do you like text</p>
+					<p>The average metrics will go here when we get them from AWS. 
+                        The individual metrics will be shown on the game page after the game. 
+                    </p>
 				</TextDisplay>
 			</CenteredComponent>
 		</PageLayout>
