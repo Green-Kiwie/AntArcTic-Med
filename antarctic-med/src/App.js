@@ -23,14 +23,15 @@ function Home() {
                 </TextDisplay>
 
                 <div>
-                    <div>
-                        <div>
-                            <img src="/group_photo1.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
-                            <img src="/sample_1.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
-                            <img src="/sample_2.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
-                            <img src="/sample_3.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
-                        </div>
-                    </div></div>
+                    <div className="object-cover">
+                        
+                        <img src="/group_photo1.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        <img src="/sample_1.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        <img src="/sample_2.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        <img src="/sample_3.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        
+                    </div>
+                </div>
             </CenteredComponent>
         </PageLayout>
     );
