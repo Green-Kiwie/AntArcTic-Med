@@ -6,8 +6,9 @@ export default function StartScreen({ setGameRunning }) {
     return (
         <div>
             <Designed_Button 
-                onClick={() => setGameRunning("game")} content={"Start Game"} >
+                onClick={() => setGameRunning("SwitchItUp Game")} content={"Start Game"} >
             </Designed_Button>
+            <Designed_Button onClick={() => setGameRunning("menu")} content={"Return to Menu"}/>
             <p>
                 Switch it Up! You are presented with a series of simple tasks; color matching, shape sorting,
                 animal counting, but the rules of the game change periodically, which requires them to switch mental

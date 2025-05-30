@@ -37,7 +37,7 @@ export default function Metrics({ setGameRunning, metrics }) {
 
             {/* Example button to update game state */}
             <Designed_Button 
-                onClick={() => setGameRunning("start")}
+                onClick={() => setGameRunning("SwitchItUp Start")}
                 content="Play Again"
             >
             </Designed_Button>
