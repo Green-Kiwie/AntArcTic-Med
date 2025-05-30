@@ -8,11 +8,11 @@ export default function Navbar() {
             <div className="flex items-center justify-between p-4 max-w-screen-2xl mx-auto">
                 <Link to="/">
                     <img
-                        src="/logo.png"
+                        src="/org_logo2.png"
                         alt="Logo"
-                        width={50}
-                        height={50}
-                        className="cursor-pointer"
+                        width={35}
+                        height={35}
+                        className="cursor-pointer mx-4"
                     />
                 </Link>
                 <div className="flex-grow flex justify-center relative">
