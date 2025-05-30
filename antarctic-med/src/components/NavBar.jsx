@@ -8,11 +8,11 @@ export default function Navbar() {
             <div className="flex items-center justify-between p-4 max-w-screen-2xl mx-auto">
                 <Link to="/">
                     <img
-                        src="/logo.png"
+                        src="/org_logo2.png"
                         alt="Logo"
-                        width={50}
-                        height={50}
-                        className="cursor-pointer"
+                        width={35}
+                        height={35}
+                        className="cursor-pointer mx-4"
                     />
                 </Link>
                 <div className="flex-grow flex justify-center relative">
@@ -27,6 +27,8 @@ export default function Navbar() {
                     <Link to="/" className="hover:text-blue-600">Home</Link>
                     <Link to="/game" className="hover:text-blue-600">Game</Link>
                     <Link to="/about" className="hover:text-blue-600">About</Link>
+                    <Link to="/metrics" className="hover:text-blue-600">Metrics</Link>
+
                 </div>
             </div>
         </nav>

@@ -22,7 +22,16 @@ function Home() {
                     <p>MCI development assessment through gamification</p>
                 </TextDisplay>
 
-                <div className="container">Photos here</div>
+                <div>
+                    <div className="object-cover">
+                        
+                        <img src="/group_photo1.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        <img src="/sample_1.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        <img src="/sample_2.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        <img src="/sample_3.jpg" alt = "ANTarctiqc Med" style={{width: '100%'}} />
+                        
+                    </div>
+                </div>
             </CenteredComponent>
         </PageLayout>
     );
@@ -52,7 +61,7 @@ function About() {
 
                     <p className="indent-8">Anteaters for Artificial Intelligence and Quantum Computing in Medicine is a student-run organization 
                                             made for students with interest in the field of healthcare. Our purpose is to integrate artificial intelligence 
-                                            with medicine and pathology that seeks to transform customized medicine and diagnostic accuracy. 
+                                            with medicine and pathology to transform customized medicine and diagnostic accuracy. 
                                             ANTartiqc Med strives to close healthcare disparities by democratizing access to professional medical 
                                             services worldwide in order to enhance patient outcomes and accelerate innovation in global healthcare 
                                             delivery. We are committed to building AI-driven tools that are ethical, inclusive, and clinically validated, 
@@ -62,8 +71,8 @@ function About() {
                     <p className="indent-8">Our team is currently developing a program called the Alois Machine-Memory Assisted Initiative, an 
                                             AI-driven system that leverages targeted gamification techniques to monitor and enhance patient 
                                             progression in Alzheimer’s care. Alois MMAI’s platform uniquely integrates cognitive science, machine 
-                                            learning, and user-optimized design to deliver interventions that are effective, engaging and accessible. 
-                                            Together, we envision a future where artificial intelligence drives breakthrough medical progress, 
+                                            learning, and user-optimized design to deliver interventions that are effective, engaging, and accessible. 
+                                            Together, we envision a future where artificial intelligence drives breakthroughs in medical progression, 
                                             revolutionizing the field of healthcare. 
 </p>
 
@@ -105,6 +114,21 @@ function DevTesting() {
     );
 }
 
+///GURNOOR MESSING AROUND
+function MetricsPage() {
+	return (
+		<PageLayout heading="Metrics">
+			<CenteredComponent>
+				<TextDisplay>
+					<p>The average metrics will go here when we get them from AWS. 
+                        The individual metrics will be shown on the game page after the game. 
+                    </p>
+				</TextDisplay>
+			</CenteredComponent>
+		</PageLayout>
+	);
+}
+///GURNOOR MESSING AROUNG
 function App() {
     return (
         <Router>
@@ -114,6 +138,8 @@ function App() {
                 <Route path="/game" element={<Game />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/testing" element={<DevTesting />} />
+                <Route path="/metrics" element={<MetricsPage />} />
+
             </Routes>
         </Router>
     );

@@ -1,7 +1,7 @@
 import Designed_Button from "../../global_helpers/Button"
 
 /**
- * Sends the metrics.
+ * Sends the metrics. A comment
  */
 function sendMetrics() {}
 
