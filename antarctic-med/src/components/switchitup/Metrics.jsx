@@ -1,7 +1,10 @@
+import Designed_Button from "../../global_helpers/Button"
+
 /**
- * Sends the metrics.
+ * Sends the metrics. A comment
  */
 function sendMetrics() {}
+
 
 
 export default function Metrics({ setGameRunning, metrics }) {
@@ -33,9 +36,11 @@ export default function Metrics({ setGameRunning, metrics }) {
 
 
             {/* Example button to update game state */}
-            <button onClick={() => setGameRunning("start")}>
-                Play Again
-            </button>
+            <Designed_Button 
+                onClick={() => setGameRunning("SwitchItUp Start")}
+                content="Play Again"
+            >
+            </Designed_Button>
         </div>
     )
 }

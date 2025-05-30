@@ -146,15 +146,19 @@ export default function GameField({ setGameRunning, setMetrics }) {
             {cardMatrix.length > 0 && <RenderCardMatrix card_matrix={cardMatrix} />}
 
 
-            <button onClick={() => {
-                setMetrics(prev => ({
-                    ...prev,
-                    longest_streak: maxStreak
-                }));
-                setGameRunning("metrics");
-            }}>
-                Show Metrics
-            </button>
+            <Designed_Button 
+                onClick={() => {
+                    setMetrics(prev => ({
+                        ...prev,
+                        longest_streak: maxStreak
+                    }));
+                    setGameRunning("metrics");
+                }} 
+                content="End Game"
+                colorClass = "bg-stone-300" 
+                hoverColorClass = "hover:bg-stone-600"
+            >
+            </Designed_Button>
         </div>
     )
 }

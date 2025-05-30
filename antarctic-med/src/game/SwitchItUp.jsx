@@ -11,6 +11,9 @@ import {useState} from "react";
 import StartScreen from "../components/switchitup/StartScreen";
 import GameField from "../components/switchitup/GameField";
 import Metrics from "../components/switchitup/Metrics";
+import Menu from "./Menu";
+import MatchItUpGame from "../components/matchitup/GameField";
+import MatchStartScreen from "../components/matchitup/StartScreen";
 
 // import TaskSelector from './game_logic_helpers';
 
@@ -35,15 +38,21 @@ export default function SwitchItUp() {
         median_time_between_selections: 0,
     });
 
-    const [gameRunning, setGameRunning] = useState("start");
+    const [gameRunning, setGameRunning] = useState("menu");
 
     return (
         // Returns game field if the game is running and the start screen otherwise.
         <>
-            {gameRunning === "start" ? (
+            {gameRunning === "menu" ? (
+                <Menu setGameRunning={setGameRunning}/>
+            ): gameRunning === "SwitchItUp Start" ? (
                 <StartScreen setGameRunning={setGameRunning} />
-            ) : gameRunning === "game" ? (
+            ): gameRunning === "MatchItUp Start" ? (
+                <MatchStartScreen setGameRunning={setGameRunning}/>
+            ): gameRunning === "SwitchItUp Game" ? (
                 <GameField setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} />
+            ) : gameRunning === "MatchItUp Game" ? (
+                <MatchItUpGame setGameRunning={setGameRunning}></MatchItUpGame>
             ) : gameRunning === "metrics" ? (
                 <Metrics setGameRunning={setGameRunning} metrics={metrics} />
             ) : null}
