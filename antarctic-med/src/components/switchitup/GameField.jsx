@@ -7,6 +7,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
     // Matrix Size 
     const rows = 3;
     const columns = 4;
+    const timePerRound = 10;
 
     // Prompts Usestates
     const [promptMessage, setPromptMessage] = useState('');

@@ -5,7 +5,7 @@ export default function MatchStartScreen({setGameRunning}) {
         /** Place the instructions for how to play MatchItUp here */
         return (
             <>
-            <p>test!</p>
+            <p>This game is still under developement!</p>
             </>
         )
     }
@@ -14,7 +14,7 @@ export default function MatchStartScreen({setGameRunning}) {
         {/** Create a button to start MatchItUp! */}
             <Instructions/>
             <Designed_Button id={"startMatchGame"} content={"Start Game"} onClick={() => {setGameRunning("MatchItUp Game")}}/>
-            <Designed_Button id={"returnToMenu"} content={"Return to Menu"} onClick={() => {setGameRunning("menu")}}/>
+            <Designed_Button id={"switchSwitchItUp"} content={"Switch to SwitchItUp"} onClick={() => {setGameRunning("SwitchItUp Start")}}/>
         </>
     )
 }

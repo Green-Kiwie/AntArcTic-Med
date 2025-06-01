@@ -29,7 +29,7 @@ export default function MatchItUpGame({setGameRunning}) {
     }
     return (
         <>
-        <p>Insert Game Here</p>
+        <p>Game Coming Soon...</p>
         <Designed_Button id={"returnToMatchStart"} content={"End Game"} onClick={()=>{setGameRunning("MatchItUp Start");}}/>
         </>
     )
