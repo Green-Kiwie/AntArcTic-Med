@@ -7,7 +7,7 @@ function sendMetrics() {}
 
 
 
-export default function Metrics({ setGameRunning, metrics }) {
+export default function Metrics({ setGameRunning, metrics, setMetrics }) {
     /*
     Need to determine 3 different types
     1. longest streak of accurate presses (measure accuracy)
@@ -20,6 +20,27 @@ export default function Metrics({ setGameRunning, metrics }) {
         'Longest Streak' : metrics.longest_streak || 0,
         'Missed Presses' : metrics.wrong_selection_missed_a_selection,
         'Average Reaction Time (in ms)' : metrics.total_number_of_correct_selections ? (metrics.time_from_start_of_game_to_end_of_game / metrics.total_number_of_correct_selections) : 0,
+    }
+
+    function resetMetrics() {
+        setMetrics({
+            total_number_of_wrong_selections: 0,
+            total_number_of_correct_selections: 0,
+            time_from_start_of_game_to_end_of_game: 0,
+            time_from_start_of_game_to_first_selection: 0,
+            wrong_selection_correct_color_wrong_shape: 0,
+            wrong_selection_correct_shape_wrong_color: 0,
+            wrong_selection_wrong_shape_wrong_color: 0,
+            wrong_selection_missed_a_selection: 0,
+            mean_time_between_selections: 0,
+            median_time_between_selections: 0,
+            longest_streak: 0,
+        });
+    }
+
+    function resetGame(){
+        setGameRunning("SwitchItUp Start");
+        resetMetrics()
     }
 
 
@@ -37,7 +58,7 @@ export default function Metrics({ setGameRunning, metrics }) {
 
             {/* Example button to update game state */}
             <Designed_Button 
-                onClick={() => setGameRunning("SwitchItUp Start")}
+                onClick={() => resetGame()}
                 content="Play Again"
             >
             </Designed_Button>

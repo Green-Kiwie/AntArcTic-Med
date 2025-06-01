@@ -8,7 +8,7 @@ export default function StartScreen({ setGameRunning }) {
             <Designed_Button 
                 onClick={() => setGameRunning("SwitchItUp Game")} content={"Start Game"}>
             </Designed_Button>
-            <Designed_Button onClick={() => setGameRunning("MatchItUp Start")} content={"Switch to MatchItUp"}/>
+            {/* <Designed_Button onClick={() => setGameRunning("MatchItUp Start")} content={"Switch to MatchItUp"}/> */}
             <p>
                 Switch it Up! You are presented with a series of simple tasks; color matching, shape sorting,
                 animal counting, but the rules of the game change periodically, which requires them to switch mental

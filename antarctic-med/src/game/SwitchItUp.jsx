@@ -51,7 +51,7 @@ export default function SwitchItUp() {
             ) : gameRunning === "MatchItUp Game" ? (
                 <MatchItUpGame setGameRunning={setGameRunning}></MatchItUpGame>
             ) : gameRunning === "metrics" ? (
-                <Metrics setGameRunning={setGameRunning} metrics={metrics} />
+                <Metrics setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics}/>
             ) : null}
         </>
 

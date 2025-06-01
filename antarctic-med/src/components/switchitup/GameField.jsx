@@ -76,12 +76,9 @@ export default function GameField({ setGameRunning, setMetrics }) {
         }
 
         event.target.style.visibility = "hidden";
-
-        
     }
 
-
-    // Updates the GameState when the start button is clicked. Will also implement the game state working when user clicks all answers
+    // Updates the GameState when the st bvart button is clicked. Will also implement the game state working when user clicks all answers
     function resetGameState() {
         let currentTask = selectCurrentTask();
         // Use States do not update instantly 
