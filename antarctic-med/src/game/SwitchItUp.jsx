@@ -28,7 +28,7 @@ export default function SwitchItUp() {
         total_number_of_wrong_selections: 0,
         total_number_of_correct_selections: 0,
         time_from_start_of_game_to_end_of_game: 0,
-        time_from_start_of_game_to_first_selection: 0,
+        time_from_start_of_game_to_first_selection: [],
         wrong_selection_correct_color_wrong_shape: 0,
         wrong_selection_correct_shape_wrong_color: 0,
         wrong_selection_wrong_shape_wrong_color: 0,
