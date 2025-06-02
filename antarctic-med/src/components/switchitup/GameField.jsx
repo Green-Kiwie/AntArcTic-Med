@@ -100,18 +100,24 @@ export default function GameField({ setGameRunning, setMetrics }) {
             for (let col = 0; col < card_matrix[0].length; col++) {
 
                 const buttonId = `${row},${col}`;
-                const isClicked = clickedButtons.has(buttonId);
-
-
-                let onClickParameters = {} //update this for metrics tracking
+                const isClicked = clickedButtons.has(buttonId); 
+                const isCorrect = correctCards.some(([r, c]) => r === row && c === col); 
+    
                 const labelText = get_image_str_from_id(card_matrix[row][col]);
+    
+                const buttonColorClass = isClicked ? "bg-white text-white" : get_color_code_from_id(card_matrix[row][col]);
+                const buttonHoverClass = isClicked ? null : get_hover_color_code_from_id(card_matrix[row][col]);
+    
+                const buttonContent = isClicked ? "" : labelText;
                 buttonLabels.push(
-                    <Designed_Button id = {[row, col]} key={row + ' ' + col} 
-                                    content={labelText} onClick={handleButtonClick}
-                                    onClickParameters={onClickParameters}
-                                    disable = {isClicked ? true : false}
-                                    colorClass={isClicked ? "bg-white text-white" : get_color_code_from_id(card_matrix[row][col])}
-                                    hoverColorClass={isClicked ? null : get_hover_color_code_from_id(card_matrix[row][col])}
+                    <Designed_Button 
+                    id={buttonId} 
+                    key={row + ' ' + col} 
+                    content={buttonContent}
+                    onClick={handleButtonClick}
+                    disable={isClicked}
+                    colorClass={buttonColorClass}
+                    hoverColorClass={buttonHoverClass}
                     >
                     </Designed_Button>
                 ); // Creates an HTML button

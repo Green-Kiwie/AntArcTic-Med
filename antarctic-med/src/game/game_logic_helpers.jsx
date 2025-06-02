@@ -214,7 +214,7 @@ function generate_prompt_id(combination_choice, color_choice, image_choice){
  * will return a string
 */
 function generate_prompt_message(combination_choice, color_choice, image_choice){
-    let prompt_msg = "Select everything that is ";
+    let prompt_msg = "Select everything that has ";
     if (combination_choice === 0){
         prompt_msg += get_color_str(color_choice);
     }
