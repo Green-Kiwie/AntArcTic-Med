@@ -25,6 +25,8 @@ export default function GameField({ setGameRunning, setMetrics }) {
     const [timePerSelection, setTimePerSelection] = useState([]);
     const [roundTimePerSelection, setRoundTimePerSelection] = useState([]);
 
+    const [isGameEnded, setIsGameEnded] = useState(false);
+
     // Define context object to pass around to helpers
     const context = {
         setPromptMessage,
@@ -36,6 +38,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
         setMaxStreak,
         setRoundTimePerSelection,
         setTimePerSelection,
+        setIsGameEnded,
         roundTimePerSelection,
         setGameRunning,
         currentStreak,
@@ -46,7 +49,8 @@ export default function GameField({ setGameRunning, setMetrics }) {
         cardMatrix,
         promptID,
         startTime,
-        timePerSelection
+        timePerSelection,
+        isGameEnded,
     };
 
     // Determines if the button pressed is a correct options and adds to metrics
@@ -147,7 +151,9 @@ export default function GameField({ setGameRunning, setMetrics }) {
 
 
             <Designed_Button 
-                onClick={() => endGame(context)} 
+                onClick={() => {
+                    if(!isGameEnded) endGame(context); 
+                }} 
                 content="End Game"
                 colorClass = "bg-stone-300" 
                 hoverColorClass = "hover:bg-stone-600"

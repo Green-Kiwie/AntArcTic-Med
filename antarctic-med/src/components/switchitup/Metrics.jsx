@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Designed_Button from "../../global_helpers/Button"
 
 /**
@@ -6,12 +6,26 @@ import Designed_Button from "../../global_helpers/Button"
  */
 async function sendMetrics(metrics){
     const apiUrl = process.env.REACT_APP_AWS_API_GATEWAY_URL;
-    
+
+    const validatedMetrics = {
+        total_number_of_wrong_selections: metrics.total_number_of_wrong_selections || 0,
+        total_number_of_correct_selections: metrics.total_number_of_correct_selections || 0,
+        time_from_start_of_game_to_end_of_game: metrics.time_from_start_of_game_to_end_of_game || 0,
+        time_from_start_of_game_to_first_selection: metrics.time_from_start_of_game_to_first_selection || [],
+        wrong_selection_correct_color_wrong_shape: metrics.wrong_selection_correct_color_wrong_shape || 0,
+        wrong_selection_correct_shape_wrong_color: metrics.wrong_selection_correct_shape_wrong_color || 0,
+        wrong_selection_wrong_shape_wrong_color: metrics.wrong_selection_wrong_shape_wrong_color || 0,
+        wrong_selection_missed_a_selection: metrics.wrong_selection_missed_a_selection || 0,
+        mean_time_between_selections: metrics.mean_time_between_selections || 0,
+        median_time_between_selections: metrics.median_time_between_selections || 0,
+        longest_streak: metrics.longest_streak || 0,
+    };
+
     try{
         const response = await fetch(apiUrl, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(metrics),
+            headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' },
+            body: JSON.stringify(validatedMetrics),
         });
         
         console.log("Response:", response);
@@ -43,9 +57,14 @@ export default function Metrics({ setGameRunning, metrics, setMetrics }) {
         'Average Reaction Time' : metrics.total_number_of_correct_selections ? (metrics.mean_time_between_selections/1000).toPrecision(3)+'s' : 0,
     }
 
+    const metricsSent = useRef(false);
+
     useEffect(() => {
-        if(metrics && metrics.time_from_start_of_game_to_end_of_game > 0){
+        // console.log("useEffect triggered. Metrics:", metrics);
+        // console.log("metricsSent:", metricsSent.current);
+        if(metrics && metrics.time_from_start_of_game_to_end_of_game > 0 && !metricsSent.current){
             sendMetrics(metrics);
+            metricsSent.current = true;
         }
     }, [metrics]);
 

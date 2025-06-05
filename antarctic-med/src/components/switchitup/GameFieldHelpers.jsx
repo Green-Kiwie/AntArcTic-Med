@@ -45,7 +45,9 @@ function renderCards(context, prompt) {
 }
 
 function updateEndRoundMetrics(context){
-    const {roundTimePerSelection, setMetrics, setTimePerSelection, setRoundTimePerSelection} = context;
+    const {roundTimePerSelection, setMetrics, setTimePerSelection, setRoundTimePerSelection, isGameEnded } = context;
+
+    if(isGameEnded) return;
 
     setMetrics(prev => ({
         ...prev,
@@ -60,7 +62,7 @@ function updateEndRoundMetrics(context){
 }
 
 export function resetGameState(context) {
-    const { setPromptMessage} = context;
+    const { setPromptMessage } = context;
     let currentTask = selectCurrentTask();
     setPromptMessage(currentTask[1]);
     renderCards(context, currentTask[0]);
@@ -99,9 +101,12 @@ export function updateStreak(context, clickCorrect){
 }
 
 export function endGame(context){
-    const {setMetrics, startTime, timePerSelection, setGameRunning, maxStreak} = context;
+    const { setMetrics, startTime, timePerSelection, setGameRunning, maxStreak, isGameEnded, setIsGameEnded, setPromptMessage, setCardMatrix, setCorrectCards, setClickedButtons, setPromptID, setCurrentStreak, setMaxStreak, setRoundTimePerSelection, setTimePerSelection } = context;
 
     const gameDuration = Date.now() - startTime;
+
+    if(isGameEnded) return;
+    setIsGameEnded(true);
 
     // console.log(gameDuration);
     setMetrics(prev => {
@@ -123,14 +128,13 @@ export function endGame(context){
             ...prev,
             time_from_start_of_game_to_end_of_game: gameDuration,
             mean_time_between_selections:
-                gameDuration / (totalNumWrong + total_number_of_correct_selections),
+                (totalNumWrong + total_number_of_correct_selections) > 0 ?
+                (gameDuration / (totalNumWrong + total_number_of_correct_selections)) : 0,
             total_number_of_wrong_selections: totalNumWrong,
             median_time_between_selections: getMedian(timePerSelection),
             longest_streak: maxStreak,
         };
     });
-
-    resetGameState(context);
 
     setGameRunning("metrics");
 }
