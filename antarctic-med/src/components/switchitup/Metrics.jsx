@@ -1,11 +1,32 @@
+import { useEffect } from "react";
 import Designed_Button from "../../global_helpers/Button"
 
 /**
- * Sends the metrics. A comment
+ * Sends the metrics.
  */
-function sendMetrics() {}
+async function sendMetrics(metrics){
+    const apiUrl = process.env.REACT_APP_AWS_API_GATEWAY_URL;
+    
+    try{
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(metrics),
+        });
+        
+        console.log("Response:", response);
 
-
+        if(response.ok){
+            console.log("Metrics sent!");
+        }
+        else{
+            console.log("Error sending metrics: ", response.statusText);
+        }
+    }
+    catch(error){
+        console.log("Error sending metrics: ", error);
+    }
+}
 
 export default function Metrics({ setGameRunning, metrics, setMetrics }) {
     /*
@@ -21,6 +42,12 @@ export default function Metrics({ setGameRunning, metrics, setMetrics }) {
         'Wrong presses' : metrics.wrong_selection_missed_a_selection + metrics.wrong_selection_correct_color_wrong_shape + metrics.wrong_selection_correct_shape_wrong_color + metrics.wrong_selection_wrong_shape_wrong_color,
         'Average Reaction Time' : metrics.total_number_of_correct_selections ? (metrics.mean_time_between_selections/1000).toPrecision(3)+'s' : 0,
     }
+
+    useEffect(() => {
+        if(metrics && metrics.time_from_start_of_game_to_end_of_game > 0){
+            sendMetrics(metrics);
+        }
+    }, [metrics]);
 
     function resetMetrics() {
         setMetrics({
