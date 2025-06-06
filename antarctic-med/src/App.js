@@ -10,8 +10,9 @@ import PageLayout from "./components/PageLayout";
 import Button from "./components/Button";
 import CenteredComponent from "./components/CenteredComponent";
 import TextDisplay from "./components/TextDisplay";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import SwitchItUp from './game/SwitchItUp';
+
 
 function Home() {
     return (
@@ -129,17 +130,36 @@ function MetricsPage() {
 	);
 }
 ///GURNOOR MESSING AROUNG
+// function App() {
+//     return (
+//         <Router>
+//             <NavBar />
+//             <Routes>
+//                 <Route path="/" element={<Home />} />
+//                 <Route path="/game" element={<Game />} />
+//                 <Route path="/about" element={<About />} />
+//                 <Route path="/testing" element={<DevTesting />} />
+//                 <Route path="/metrics" element={<MetricsPage />} />
+
+//             </Routes>
+//         </Router>
+//     );
+// }
+
+
 function App() {
     return (
-        <Router>
+        <Router basename="/AntArcTic-Med">
             <NavBar />
             <Routes>
-                <Route path="/" element={<Home />} />
+                {/* Redirect root '/' to '/about' */}
+                <Route path="/" element={<Navigate to="/about" replace />} />
+                
                 <Route path="/game" element={<Game />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/testing" element={<DevTesting />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/metrics" element={<MetricsPage />} />
-
             </Routes>
         </Router>
     );

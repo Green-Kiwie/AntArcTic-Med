@@ -24,7 +24,7 @@ export default function Navbar() {
                     )}
                 </div>
                 <div className="ml-auto flex space-x-6 text-xl" style={{ fontSize: "3vmin" }}>
-                    <Link to="/" className="hover:text-blue-600">Home</Link>
+                    <Link to="/home" className="hover:text-blue-600">Home</Link>
                     <Link to="/game" className="hover:text-blue-600">Game</Link>
                     <Link to="/about" className="hover:text-blue-600">About</Link>
                     <Link to="/metrics" className="hover:text-blue-600">Metrics</Link>
