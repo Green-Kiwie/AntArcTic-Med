@@ -12,6 +12,9 @@ import CenteredComponent from "./components/CenteredComponent";
 import TextDisplay from "./components/TextDisplay";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SwitchItUp from './game/SwitchItUp';
+import MetricsPage from './MetricsPage';
+
+
 
 function Home() {
     return (
@@ -96,6 +99,7 @@ function About() {
                         Logan Mifflin<br/>
                         Siddharth Sundar<br/>
                         Vaibhav Satish<br/>
+                        Gurnoor Singh<br/>
                     </div>
                 </TextDisplay>
 
@@ -115,19 +119,7 @@ function DevTesting() {
 }
 
 ///GURNOOR MESSING AROUND
-function MetricsPage() {
-	return (
-		<PageLayout heading="Metrics">
-			<CenteredComponent>
-				<TextDisplay>
-					<p>The average metrics will go here when we get them from AWS. 
-                        The individual metrics will be shown on the game page after the game. 
-                    </p>
-				</TextDisplay>
-			</CenteredComponent>
-		</PageLayout>
-	);
-}
+
 ///GURNOOR MESSING AROUNG
 function App() {
     return (
