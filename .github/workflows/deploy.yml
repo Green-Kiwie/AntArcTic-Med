@@ -24,6 +24,9 @@ jobs:
       - name: List files in directory
         run: ls antarctic-med
 
+      - name: Set environment variable
+        run: echo "REACT_APP_AWS_API_GATEWAY_URL=${{ secrets.REACT_APP_AWS_API_GATEWAY_URL }}" >> $GITHUB_ENV
+
       - name: Install dependencies
         run: npm install
         working-directory: antarctic-med
