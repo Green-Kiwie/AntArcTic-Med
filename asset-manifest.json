@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/AntArcTic-Med/static/css/main.3ff634c1.css",
-    "main.js": "/AntArcTic-Med/static/js/main.0eaed826.js",
+    "main.js": "/AntArcTic-Med/static/js/main.780c7cdd.js",
     "static/js/453.8302270f.chunk.js": "/AntArcTic-Med/static/js/453.8302270f.chunk.js",
     "index.html": "/AntArcTic-Med/index.html",
     "main.3ff634c1.css.map": "/AntArcTic-Med/static/css/main.3ff634c1.css.map",
-    "main.0eaed826.js.map": "/AntArcTic-Med/static/js/main.0eaed826.js.map",
+    "main.780c7cdd.js.map": "/AntArcTic-Med/static/js/main.780c7cdd.js.map",
     "453.8302270f.chunk.js.map": "/AntArcTic-Med/static/js/453.8302270f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3ff634c1.css",
-    "static/js/main.0eaed826.js"
+    "static/js/main.780c7cdd.js"
   ]
 }
