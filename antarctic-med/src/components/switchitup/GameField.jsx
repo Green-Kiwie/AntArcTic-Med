@@ -1,12 +1,14 @@
 import { useState } from "react";
-import  { selectCurrentTask, selectCardValues, get_color_code_from_id, get_image_str_from_id, get_hover_color_code_from_id} from "../../game/game_logic_helpers";
+import  {get_color_code_from_id, get_image_str_from_id, get_hover_color_code_from_id} from "../../game/game_logic_helpers";
 import Designed_Button from "../../global_helpers/Button"
 import GameTimer from "../../global_helpers/GameTimer"
+import {endGame, updateCorrectSelection, updateWrongSelection, resetGameState, addButtonToClickedSet, updateInvalidSelection, updateStreak, updateTimeBetweenSelection} from "./GameFieldHelpers";
 
 export default function GameField({ setGameRunning, setMetrics }) {
     // Matrix Size 
     const rows = 3;
     const columns = 4;
+    const timePerRound = 10;
 
     // Prompts Usestates
     const [promptMessage, setPromptMessage] = useState('');
@@ -17,85 +19,82 @@ export default function GameField({ setGameRunning, setMetrics }) {
 
     const [currentStreak, setCurrentStreak] = useState(0);
     const [maxStreak, setMaxStreak] = useState(0);
-    const [roundHasMistake, setRoundHasMistake] = useState(false);
+    const [promptID, setPromptID] = useState('');
 
-    /* example of updating metrics */
-    function update_metrics() {
-        console.log('Button clicked');
-        setMetrics(prev => ({
-            ...prev,
-            total_number_of_correct_selections: prev.total_number_of_correct_selections + 1,
-        }));
-    }
+    const [startTime, setStartTime] = useState(Date.now());
+    const [timePerSelection, setTimePerSelection] = useState([]);
+    const [roundTimePerSelection, setRoundTimePerSelection] = useState([]);
 
-    const update_wrong_selection = () => {
-        console.log('Wrong button clicked');
-        setMetrics(prev => ({
-            ...prev,
-            wrong_selection_missed_a_selection : prev.wrong_selection_missed_a_selection + 1,
-        }));
+    const [isGameEnded, setIsGameEnded] = useState(false);
+
+    // Define context object to pass around to helpers
+    const context = {
+        setPromptMessage,
+        setCardMatrix,
+        setCorrectCards,
+        setClickedButtons,
+        setPromptID,
+        setCurrentStreak,
+        setMaxStreak,
+        setRoundTimePerSelection,
+        setTimePerSelection,
+        setIsGameEnded,
+        roundTimePerSelection,
+        setGameRunning,
+        currentStreak,
+        maxStreak,
+        setMetrics,
+        rows,
+        columns,
+        cardMatrix,
+        promptID,
+        startTime,
+        timePerSelection,
+        isGameEnded,
     };
-
-    function addButtonToClickedSet(buttonId){
-        setClickedButtons(prev => new Set(prev).add(buttonId));
-    }
 
     // Determines if the button pressed is a correct options and adds to metrics
     function handleButtonClick(event) {
+
         const clickedRow = Number(event.target.id[0]);
         const clickedCol = Number(event.target.id[2]);
         let correct = numOfCorrect;
+        let clickCorrect = correctCards.some(([row, col]) => row === clickedRow && col === clickedCol)
 
-        addButtonToClickedSet(`${clickedRow},${clickedCol}`);
-        
-        if (correctCards.some(
-            ([row, col]) => row === clickedRow && col === clickedCol)) {
+        const clickContext = {
+            clickedRow,
+            clickedCol,
+            correctCards,
+        }
+
+        addButtonToClickedSet(context, `${clickedRow},${clickedCol}`);
+        updateTimeBetweenSelection(context);
+
+        if (!event.target.closest("button")){
+            updateInvalidSelection(context)
+        }
+        else if (!event.target.closest("button").id.includes(',')) {
+            return;
+        }
+        else if (clickCorrect) {
             correct = numOfCorrect + 1;
             setNumOfCorrect(correct);
-            update_metrics();
+            updateCorrectSelection(context);
             console.log('Correct!');
+            event.target.style.visibility = "hidden";
         }
         else{
-            setRoundHasMistake(true);
-            update_wrong_selection();
+            updateWrongSelection(context, clickContext);
+            event.target.style.visibility = "hidden";
         }
 
-        if (correct === correctCards.length) {
-            if(roundHasMistake){ setCurrentStreak(0); }
-            else{
-                setCurrentStreak(prev => {
-                const newStreak = prev + 1;
-                setMaxStreak(max => Math.max(max, newStreak));
-                return newStreak;
-                });
-            }
-            console.log("Done!");
-            resetGameState();
+        updateStreak(context, clickCorrect)
+
+        if (correct === correctCards.length){
+            resetGameState(context);
             setNumOfCorrect(0);
         }
-
-        event.target.style.visibility = "hidden";
-
-        
-    }
-
-
-    // Updates the GameState when the start button is clicked. Will also implement the game state working when user clicks all answers
-    function resetGameState() {
-        let currentTask = selectCurrentTask();
-        // Use States do not update instantly 
-        setPromptMessage(currentTask[1]);
-        renderCards(currentTask[0]);
-        setRoundHasMistake(false);
-    }
-
-    // Updates UseState to display the card_matrix. Will also implement correct cards in future commit
-    function renderCards(prompt) {
-        let [card_matrix, correct_cards] = selectCardValues(prompt, rows, columns);
-        setCardMatrix(card_matrix);
-        setCorrectCards(correct_cards);
-        setClickedButtons(new Set())
-    }
+    }    
 
 
     // Render the Cards by decoding matrix and adding them as buttons
@@ -105,18 +104,25 @@ export default function GameField({ setGameRunning, setMetrics }) {
             for (let col = 0; col < card_matrix[0].length; col++) {
 
                 const buttonId = `${row},${col}`;
-                const isClicked = clickedButtons.has(buttonId);
-
-
-                let onClickParameters = {} //update this for metrics tracking
+                const isClicked = clickedButtons.has(buttonId); 
+                const isCorrect = correctCards.some(([r, c]) => r === row && c === col); 
+    
                 const labelText = get_image_str_from_id(card_matrix[row][col]);
+    
+                const buttonColorClass = isClicked ? "bg-white text-white" : get_color_code_from_id(card_matrix[row][col]);
+                const buttonHoverClass = isClicked ? null : get_hover_color_code_from_id(card_matrix[row][col]);
+    
+                const buttonContent = isClicked ? "" : labelText;
                 buttonLabels.push(
-                    <Designed_Button id = {[row, col]} key={row + ' ' + col} 
-                                    content={labelText} onClick={handleButtonClick}
-                                    onClickParameters={onClickParameters}
-                                    disable = {isClicked ? true : false}
-                                    colorClass={isClicked ? "bg-white text-white" : get_color_code_from_id(card_matrix[row][col])}
-                                    hoverColorClass={isClicked ? null : get_hover_color_code_from_id(card_matrix[row][col])}
+                    <Designed_Button 
+                    id={buttonId} 
+                    key={row + ' ' + col} 
+                    content={buttonContent}
+                    onClick={handleButtonClick}
+                    disable={isClicked}
+                    colorClass={buttonColorClass}
+                    hoverColorClass={buttonHoverClass}
+                    size ={'4xl'}
                     >
                     </Designed_Button>
                 ); // Creates an HTML button
@@ -132,27 +138,22 @@ export default function GameField({ setGameRunning, setMetrics }) {
     }
 
     return (
-        <div>
+        <div onClick={(e) => {
+                if (e.target.closest('button')) return;
+                handleButtonClick(e);
+            }} >
             <h1>Game Field</h1>
-            {/* example of calling the update
-            <button id = 'update-metrics' onClick={handleButtonClick}>
-                add 1 to total number of correct selections
-            </button> */}
 
-            {<GameTimer timeLimitInSeconds = {60} onEnd={() => {setGameRunning("metrics")}}/>}
+            {<GameTimer timeLimitInSeconds = {60} onEnd={() => endGame(context)}/>}
 
-            <h2>{promptMessage === '' ? resetGameState() : promptMessage}</h2>    
+            <h2>{promptMessage === '' ? resetGameState(context) : promptMessage}</h2>    
 
             {cardMatrix.length > 0 && <RenderCardMatrix card_matrix={cardMatrix} />}
 
 
             <Designed_Button 
                 onClick={() => {
-                    setMetrics(prev => ({
-                        ...prev,
-                        longest_streak: maxStreak
-                    }));
-                    setGameRunning("metrics");
+                    if(!isGameEnded) endGame(context); 
                 }} 
                 content="End Game"
                 colorClass = "bg-stone-300" 

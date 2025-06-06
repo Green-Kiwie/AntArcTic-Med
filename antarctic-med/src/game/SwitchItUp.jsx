@@ -11,7 +11,6 @@ import {useState} from "react";
 import StartScreen from "../components/switchitup/StartScreen";
 import GameField from "../components/switchitup/GameField";
 import Metrics from "../components/switchitup/Metrics";
-import Menu from "./Menu";
 import MatchItUpGame from "../components/matchitup/GameField";
 import MatchStartScreen from "../components/matchitup/StartScreen";
 
@@ -29,7 +28,7 @@ export default function SwitchItUp() {
         total_number_of_wrong_selections: 0,
         total_number_of_correct_selections: 0,
         time_from_start_of_game_to_end_of_game: 0,
-        time_from_start_of_game_to_first_selection: 0,
+        time_from_start_of_game_to_first_selection: [],
         wrong_selection_correct_color_wrong_shape: 0,
         wrong_selection_correct_shape_wrong_color: 0,
         wrong_selection_wrong_shape_wrong_color: 0,
@@ -38,14 +37,12 @@ export default function SwitchItUp() {
         median_time_between_selections: 0,
     });
 
-    const [gameRunning, setGameRunning] = useState("menu");
+    const [gameRunning, setGameRunning] = useState("SwitchItUp Start");
 
     return (
         // Returns game field if the game is running and the start screen otherwise.
         <>
-            {gameRunning === "menu" ? (
-                <Menu setGameRunning={setGameRunning}/>
-            ): gameRunning === "SwitchItUp Start" ? (
+            {gameRunning === "SwitchItUp Start" ? (
                 <StartScreen setGameRunning={setGameRunning} />
             ): gameRunning === "MatchItUp Start" ? (
                 <MatchStartScreen setGameRunning={setGameRunning}/>
@@ -54,7 +51,7 @@ export default function SwitchItUp() {
             ) : gameRunning === "MatchItUp Game" ? (
                 <MatchItUpGame setGameRunning={setGameRunning}></MatchItUpGame>
             ) : gameRunning === "metrics" ? (
-                <Metrics setGameRunning={setGameRunning} metrics={metrics} />
+                <Metrics setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics}/>
             ) : null}
         </>
 

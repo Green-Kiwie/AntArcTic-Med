@@ -8,7 +8,7 @@ import { getRandomInt } from '../global_helpers/utils';
 
 
 function get_image_list(){ //change these values to change image options
-    return {1: "A", 2: "B", 3: "C"}; //0 will be reserved for if unselected
+    return {1: "🐶", 2: "🐱", 3: "🐤"}; //0 will be reserved for if unselected
 }
 
 function get_color_list(){ //change these values to change color options
@@ -214,7 +214,7 @@ function generate_prompt_id(combination_choice, color_choice, image_choice){
  * will return a string
 */
 function generate_prompt_message(combination_choice, color_choice, image_choice){
-    let prompt_msg = "Select everything that is ";
+    let prompt_msg = "Select everything that has ";
     if (combination_choice === 0){
         prompt_msg += get_color_str(color_choice);
     }

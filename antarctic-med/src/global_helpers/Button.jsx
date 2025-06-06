@@ -3,7 +3,7 @@
 // <Button content="Go to about" link="/about" />
 
 function Designed_Button({id, content, onClick, onClickParameters, disable,
-                            colorClass = "bg-blue-300", hoverColorClass = "hover:bg-blue-600"}) {
+                            colorClass = "bg-blue-300", hoverColorClass = "hover:bg-blue-600", size = 'base'}) {
 
     
 
@@ -17,7 +17,7 @@ function Designed_Button({id, content, onClick, onClickParameters, disable,
             disabled={disable}
             className={`${color_text} hover:text-white
              px-6 py-3 inline-block text-center shadow-lg
-             font-semibold text-base transition duration-300 ease-in-out transform hover:scale-105`}
+             font-semibold text-${size} transition duration-300 ease-in-out transform hover:scale-105`}
             style={{ borderRadius: "25px" }}
         >
             {content}
