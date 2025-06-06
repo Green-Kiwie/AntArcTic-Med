@@ -118,6 +118,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
                     disable={isClicked}
                     colorClass={buttonColorClass}
                     hoverColorClass={buttonHoverClass}
+                    size ={'4xl'}
                     >
                     </Designed_Button>
                 ); // Creates an HTML button
