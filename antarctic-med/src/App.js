@@ -149,7 +149,7 @@ function MetricsPage() {
 
 function App() {
     return (
-        <Router basename="/AntArcTic-Med">
+        <Router basename="/">
             <NavBar />
             <Routes>
                 {/* Redirect root '/' to '/about' */}
