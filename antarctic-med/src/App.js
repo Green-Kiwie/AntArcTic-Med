@@ -12,6 +12,7 @@ import CenteredComponent from "./components/CenteredComponent";
 import TextDisplay from "./components/TextDisplay";
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import SwitchItUp from './game/SwitchItUp';
+import Plot from 'react-plotly.js';
 
 
 function Home() {
@@ -117,18 +118,47 @@ function DevTesting() {
 
 ///GURNOOR MESSING AROUND
 function MetricsPage() {
-	return (
-		<PageLayout heading="Metrics">
-			<CenteredComponent>
-				<TextDisplay>
-					<p>The average metrics will go here when we get them from AWS. 
-                        The individual metrics will be shown on the game page after the game. 
-                    </p>
-				</TextDisplay>
-			</CenteredComponent>
-		</PageLayout>
-	);
+  const data = [
+    {
+      y: [5, 7, 8, 6, 5, 9, 4, 6, 8, 7], // Sample metric scores
+      type: 'box',
+      name: 'Memory Score',
+      boxpoints: 'all',
+      jitter: 0.3,
+      pointpos: -1.8,
+      marker: { color: 'rgba(100, 150, 255, 0.6)' },
+      line: { color: 'blue' }
+    }
+  ];
+
+  const layout = {
+    title: 'Player Memory Score Distribution',
+    yaxis: {
+      title: 'Score',
+      range: [0, 10]
+    },
+    width: 600,
+    height: 400
+  };
+
+  return (
+    <PageLayout heading="Metrics">
+      <CenteredComponent>
+        <TextDisplay>
+          <p>
+            The average metrics will go here when we get them from AWS.
+            The individual metrics will be shown on the game page after the game.
+          </p>
+        </TextDisplay>
+
+        <div style={{ marginTop: '40px' }}>
+          <Plot data={data} layout={layout} />
+        </div>
+      </CenteredComponent>
+    </PageLayout>
+  );
 }
+
 ///GURNOOR MESSING AROUNG
 // function App() {
 //     return (
