@@ -4,10 +4,12 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
+    "@aws-amplify/ui-react": "^6.11.2",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "aws-amplify": "^6.15.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-native-web": "^0.20.0",
