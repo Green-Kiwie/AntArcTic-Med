@@ -28,12 +28,12 @@ Amplify.configure({
         loginWith: {
             oauth: {
                 domain: awsmobile.oauth.domain,
-                scopes: ["openid", "email", "profile"],
+                scopes: ["openid", "email", "phone"],
                 redirectSignIn: ["http://localhost:3000/signin"],
                 redirectSignOut: ["http://localhost:3000/signin"],
-                responseType: "token"
+                responseType: "code"
             },
-        username: true,
+        username: false,
         email: true,
         phone: false
         }
