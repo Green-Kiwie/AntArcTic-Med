@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { signInWithRedirect } from "aws-amplify/auth";
 
 export default function Navbar({ user, signOut }) {
     const location = useLocation();
@@ -59,14 +60,25 @@ export default function Navbar({ user, signOut }) {
                     <Link to="/about" className="hover:text-blue-600">About</Link>
                     <Link to="/metrics" className="hover:text-blue-600">Metrics</Link>
                     {!user && (
-                        <Link to="/signin" className="hover:text-blue-600">
+                        <button
+                            onClick={() => signInWithRedirect()}
+                            className="hover:text-blue-600"
+                            style={{ background: "none", border: "none", cursor: "pointer" }}
+                        >
                             Sign In
-                        </Link>
+                        </button>
                     )}
                     {user && (
-                        <button onClick={signOut} className="hover:text-blue-600">
-                            Sign Out
-                        </button>
+                        <>
+                            <Link to="/account" className="hover:text-blue-600">Account</Link>
+                            <button
+                                onClick={signOut}
+                                className="hover:text-blue-600"
+                                style={{ background: "none", border: "none", cursor: "pointer" }}
+                            >
+                                Sign Out
+                            </button>
+                        </>
                     )}
 >>>>>>> c3b5bac (Added basic signIn functionality w/ Amplify & AWS Cognito)
                 </div>
