@@ -16,15 +16,27 @@ import MetricsPage from './pages/metrics';
 =======
 import { Amplify } from 'aws-amplify';
 import awsmobile from './aws-exports.js';
-import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
+import { signInWithRedirect } from "aws-amplify/auth";
 
 
 Amplify.configure({
   Auth: {
     Cognito: {
         userPoolId: awsmobile.aws_user_pools_id,
-        userPoolWebClientId: awsmobile.aws_user_pools_web_client_id,
+        userPoolClientId: awsmobile.aws_user_pools_web_client_id,
+        loginWith: {
+            oauth: {
+                domain: awsmobile.oauth.domain,
+                scopes: ["openid", "email", "profile"],
+                redirectSignIn: ["http://localhost:3000/signin"],
+                redirectSignOut: ["http://localhost:3000/signin"],
+                responseType: "token"
+            },
+        username: true,
+        email: true,
+        phone: false
+        }
     }
   }
 });
@@ -151,16 +163,9 @@ function MetricsPage() {
 
 function SignInPage() {
   return (
-    <div style={{
-      minHeight: '100vh',
-      minWidth: '100vw',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: 'linear-gradient(135deg, #3a8dde 0%, #6ee7b7 100%)'
-    }}>
-      <Authenticator />
-    </div>
+    <button onClick={() => signInWithRedirect()}>
+      Sign In
+    </button>
   );
 >>>>>>> c3b5bac (Added basic signIn functionality w/ Amplify & AWS Cognito)
 }
