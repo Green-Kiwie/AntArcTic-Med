@@ -5,7 +5,18 @@
 // For new pages that have buttons in the NavBar, must also add the routers in the NavBar component
 
 import './App.css';
+<<<<<<< HEAD
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+=======
+import NavBar from './components/NavBar';
+import PageLayout from "./components/PageLayout";
+import Button from "./components/Button";
+import CenteredComponent from "./components/CenteredComponent";
+import TextDisplay from "./components/TextDisplay";
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import SwitchItUp from './game/SwitchItUp';
+>>>>>>> 5d840fc (Sign in and oauth logic is finally working)
 
 <<<<<<< HEAD
 import Home from "./pages/homepage"
@@ -17,28 +28,29 @@ import MetricsPage from './pages/metrics';
 import { Amplify } from 'aws-amplify';
 import awsmobile from './aws-exports.js';
 import '@aws-amplify/ui-react/styles.css';
-import { signInWithRedirect } from "aws-amplify/auth";
+import { getCurrentUser, signOut } from "aws-amplify/auth";
 
 
+console.log("Amplify config:", awsmobile);
 Amplify.configure({
   Auth: {
     Cognito: {
+        region: awsmobile.aws_project_region,
         userPoolId: awsmobile.aws_user_pools_id,
         userPoolClientId: awsmobile.aws_user_pools_web_client_id,
         loginWith: {
             oauth: {
                 domain: awsmobile.oauth.domain,
-                scopes: ["openid", "email", "phone"],
-                redirectSignIn: ["http://localhost:3000/signin"],
-                redirectSignOut: ["http://localhost:3000/signin"],
-                responseType: "code"
+                scopes: awsmobile.oauth.scopes,
+                redirectSignIn: awsmobile.oauth.redirectSignIn,
+                redirectSignOut: awsmobile.oauth.redirectSignOut,
+                responseType: awsmobile.oauth.responseType
             },
-        username: false,
-        email: true,
-        phone: false
+            username: true,
+            email: true,
+            }
         }
     }
-  }
 });
 
 function Home() {
@@ -161,6 +173,7 @@ function MetricsPage() {
 	);
 }
 
+<<<<<<< HEAD
 function SignInPage() {
   return (
     <button onClick={() => signInWithRedirect()}>
@@ -170,21 +183,61 @@ function SignInPage() {
 >>>>>>> c3b5bac (Added basic signIn functionality w/ Amplify & AWS Cognito)
 }
 
+=======
+>>>>>>> 5d840fc (Sign in and oauth logic is finally working)
 function App() {
-  return (
-    <Router>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/game" element={<Game />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/testing" element={<DevTesting />} />
-        <Route path="/metrics" element={<MetricsPage />} />
-        <Route path="/signin" element={<SignInPage />} />
-      </Routes>
-    </Router>
+    const [ user, setUser ] = useState(null);
+    useEffect(() => {
+        getCurrentUser()
+        .then(setUser)
+        .catch(() => setUser(null));
+    }, []);
+
+    const handleSignOut = async () => {
+        await signOut();
+        setUser(null);
+    }
+
+    return (
+        <Router>
+            <NavBar user={user} signOut={handleSignOut}/>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/game" element={<Game />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/testing" element={<DevTesting />} />
+                <Route path="/metrics" element={<MetricsPage />} />
+                <Route path="/signin" element={<SignInCallback setUser={setUser} />} />
+                <Route path="/account" element={<AccountPage user={user} />} />
+            </Routes>
+        </Router>
   );
 }
 
+function AccountPage({ user }){
+    return (
+        <PageLayout heading="Account">
+            <CenteredComponent>
+                <TextDisplay>
+                    {user ? <h2>Welcome.</h2> : <p>Sign in to save progress and manage sessions.</p>}
+                </TextDisplay>
+            </CenteredComponent>
+        </PageLayout>
+    )
+}
+
+function SignInCallback({ setUser }) {
+  const nav = useNavigate();
+
+  useEffect(() => {
+    getCurrentUser()
+      .then(user => {
+        setUser(user);
+        nav("/account");
+      })
+      .catch(() => {nav("/");});
+  }, [setUser, nav]);
+  return <div>Signing you in...</div>;
+}
 
 export default App;

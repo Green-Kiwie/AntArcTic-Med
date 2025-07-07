@@ -5,9 +5,9 @@ const awsmobile = {
     "aws_user_pools_web_client_id": process.env.REACT_APP_AWS_USER_POOLS_WEB_CLIENT_ID,
     oauth: {
         domain: process.env.REACT_APP_DOMAIN,
-        scope:["openid", "email", "phone"],
-        redirectSignIn: "http://localhost:3000/signin",
-        redirectSignOut: "http://localhost:3000/signin",
+        scopes: [ "openid", "email" ],
+        redirectSignIn: [ "http://localhost:3000/signin", "https://antartiqcmed.org/signin", process.env.REACT_APP_CALLBACK_SIGNIN ],
+        redirectSignOut: [ "http://localhost:3000", "https://antartiqcmed.org" ],
         responseType: "code"
     }
 };
