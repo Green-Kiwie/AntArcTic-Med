@@ -5,9 +5,11 @@ export default function StartScreen({ setGameRunning }) {
 
     return (
         <div>
-            <Designed_Button 
-                onClick={() => setGameRunning("SwitchItUp Game")} content={"Start Game"}>
-            </Designed_Button>
+            <div className={"py-5"}>
+                <Designed_Button
+                    onClick={() => setGameRunning("SwitchItUp Game")} content={"Start Game"} size={"2xl"}>
+                </Designed_Button>
+            </div>
             {/* <Designed_Button onClick={() => setGameRunning("MatchItUp Start")} content={"Switch to MatchItUp"}/> */}
             <p>
                 Switch it Up! You are presented with a series of simple tasks; color matching, shape sorting,

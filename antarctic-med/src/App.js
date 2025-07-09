@@ -13,6 +13,7 @@ import TextDisplay from "./components/TextDisplay";
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import SwitchItUp from './game/SwitchItUp';
+import TeamSection from "./components/TeamSection";
 
 
 
@@ -27,8 +28,6 @@ function Home() {
                     className="relative w-full h-screen bg-cover bg-center flex items-center justify-center text-white"
                     style={{
                     backgroundImage: `url(${process.env.PUBLIC_URL}/hero-bg.png)`,
-                    // You can replace the placeholder URL with your actual image URL
-                    // For better performance, consider optimizing your image and using a CDN
                 }}>
                     <div className={"flex flex-col items-center"}>
                         <div className={"flex items-center"}>
@@ -112,70 +111,48 @@ function Home() {
 
 function Game() {
     return (
-        <PageLayout heading="Game">
-            <NavBar />
+        <>
             <CenteredComponent>
-                <div className="relative" style={{ width: '80%', paddingBottom: '50%', marginTop: '20px' }}>
-                    <div className="absolute top-0 left-0 w-full h-full bg-white" style={{
-                        padding:'40px', textAlign:'center', borderRadius: '25px', overflowY: 'auto',
-                    }}>
+                <NavBar />
+                    <div className="h-screen w-full bg-white px-60 py-20">
                         <SwitchItUp />
                     </div>
-                </div>
             </CenteredComponent>
-        </PageLayout>
+        </>
     );
 }
 
 function About() {
     return (
-        <PageLayout heading="About Us">
+        <>
             <NavBar />
             <CenteredComponent>
-                <TextDisplay>
+                <div className={"bg-white"}>
+                    <div className={"py-20 px-60"}>
+                        <p className="indent-8">Anteaters for Artificial Intelligence and Quantum Computing in Medicine is a student-run organization
+                            made for students with interest in the field of healthcare. Our purpose is to integrate artificial intelligence
+                            with medicine and pathology to transform customized medicine and diagnostic accuracy.
+                            ANTartiqc Med strives to close healthcare disparities by democratizing access to professional medical
+                            services worldwide in order to enhance patient outcomes and accelerate innovation in global healthcare
+                            delivery. We are committed to building AI-driven tools that are ethical, inclusive, and clinically validated,
+                            while also enabling equitable care across diverse populations and health systems.
+                        </p><br/>
 
-                    <p className="indent-8">Anteaters for Artificial Intelligence and Quantum Computing in Medicine is a student-run organization 
-                                            made for students with interest in the field of healthcare. Our purpose is to integrate artificial intelligence 
-                                            with medicine and pathology to transform customized medicine and diagnostic accuracy. 
-                                            ANTartiqc Med strives to close healthcare disparities by democratizing access to professional medical 
-                                            services worldwide in order to enhance patient outcomes and accelerate innovation in global healthcare 
-                                            delivery. We are committed to building AI-driven tools that are ethical, inclusive, and clinically validated, 
-                                            while also enabling equitable care across diverse populations and health systems.
-</p><br/>
-
-                    <p className="indent-8">Our team is currently developing a program called the Alois Machine-Memory Assisted Initiative, an 
-                                            AI-driven system that leverages targeted gamification techniques to monitor and enhance patient 
-                                            progression in Alzheimer’s care. Alois MMAI’s platform uniquely integrates cognitive science, machine 
-                                            learning, and user-optimized design to deliver interventions that are effective, engaging, and accessible. 
-                                            Together, we envision a future where artificial intelligence drives breakthroughs in medical progression, 
-                                            revolutionizing the field of healthcare. 
-</p>
-
-                    <div className="text-center mt-20">
-                        <h1 className="heading">Our Team</h1>
-
-                        Arnav Chandan (President)<br/>
-                        Rigel de Souza (Treasurer)<br/>
-                        Emma Chen (Social Media)<br/><br/>
-
-                        Project<br/>
-                        Kierann (Project Lead)<br/><br/>
-
-                        Website Team<br/>
-                        Ashley Yee (Lead)<br/>
-                        Rigel de Souza<br/><br/>
-
-                        Game Team<br/>
-                        Jeremiah Lillion (Lead)<br/>
-                        Anish Venkatesalu<br/>
-                        Logan Mifflin<br/>
-                        Siddharth Sundar<br/>
-                        Vaibhav Satish<br/>
+                        <p className="indent-8">Our team is currently developing a program called the Alois Machine-Memory Assisted Initiative, an
+                            AI-driven system that leverages targeted gamification techniques to monitor and enhance patient
+                            progression in Alzheimer’s care. Alois MMAI’s platform uniquely integrates cognitive science, machine
+                            learning, and user-optimized design to deliver interventions that are effective, engaging, and accessible.
+                            Together, we envision a future where artificial intelligence drives breakthroughs in medical progression,
+                            revolutionizing the field of healthcare.
+                        </p>
                     </div>
-                </TextDisplay>
+
+                        <TeamSection></TeamSection>
+
+                </div>
 
             </CenteredComponent>
-        </PageLayout>
+        </>
     );
 }
 

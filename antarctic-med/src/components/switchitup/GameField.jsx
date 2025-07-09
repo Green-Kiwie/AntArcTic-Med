@@ -169,9 +169,9 @@ export default function GameField({ setGameRunning, setMetrics }) {
             }
         }
         return (
-            <View style={gameFieldStyles.buttonGridContainer}>
-                {buttonElements}
-            </View>
+                <View style={gameFieldStyles.buttonGridContainer}>
+                    {buttonElements}
+                </View>
         );
     }
 

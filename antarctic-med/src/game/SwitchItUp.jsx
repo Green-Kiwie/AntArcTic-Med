@@ -47,7 +47,9 @@ export default function SwitchItUp() {
             ): gameRunning === "MatchItUp Start" ? (
                 <MatchStartScreen setGameRunning={setGameRunning}/>
             ): gameRunning === "SwitchItUp Game" ? (
-                <GameField setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} />
+                <div className={"border-2 border-solid"}>
+                    <GameField setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} />
+                </div>
             ) : gameRunning === "MatchItUp Game" ? (
                 <MatchItUpGame setGameRunning={setGameRunning}></MatchItUpGame>
             ) : gameRunning === "metrics" ? (
