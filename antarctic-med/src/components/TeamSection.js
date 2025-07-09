@@ -6,7 +6,7 @@ const teams = [
         name: "Executive Team",
         members: [
             {
-                name: "Kierann",
+                name: "Kierann Chong",
                 role: "President",
                 imageUrl: `${process.env.PUBLIC_URL}/images/team/kierann.jpg`
             },
