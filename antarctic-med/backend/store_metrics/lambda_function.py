@@ -5,10 +5,11 @@ from datetime import datetime
 from decimal import Decimal
 
 dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('MetricsTable')
+table = dynamodb.Table('MetricsTableV2')
 
 REQUIRED_METRICS = \
 [
+    'user_id',
     'total_number_of_wrong_selections',
     'total_number_of_correct_selections',
     'time_from_start_of_game_to_end_of_game',
@@ -22,7 +23,6 @@ REQUIRED_METRICS = \
     'longest_streak'
 ]
 
-
 CORS_HEADERS = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': '*',
@@ -31,6 +31,9 @@ CORS_HEADERS = {
 
 def lambda_handler(event, context):
     method = event.get('requestContext', {}).get('http', {}).get('method', '')
+
+    print(event)
+
     if method != 'POST':
         return {
             'statusCode': 405,
@@ -62,14 +65,17 @@ def lambda_handler(event, context):
                 'body': json.dumps('Bad Request: missing one or more required metrics.')
             }
 
-    array_to_string = lambda value: ','.join(map(str, value)) if isinstance(value, list) and len(value) > 0 else (None if isinstance(value, list) else value)
-
     timestamp = datetime.now().isoformat()
+
     item = {
-        'id': str(uuid.uuid4()),
-        'timestamp': timestamp
+        'user_id': str(data.get('user_id')),
+        'session_id': str(uuid.uuid4()),
+        'timestamp': timestamp,
     }
+
     for metric in REQUIRED_METRICS:
+        if metric == 'user_id':
+            continue
         value = data.get(metric)
         if value is None:
             return {
