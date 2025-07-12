@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react"; // Import useEffect
 import { View, Text, StyleSheet } from 'react-native';
 import { get_color_code_from_id, get_image_str_from_id, get_hover_color_code_from_id } from "./GameLogicHelpers";
@@ -7,6 +8,17 @@ import { endGame, updateCorrectSelection, updateWrongSelection, resetGameState, 
 
 export default function GameField({ setGameRunning, setMetrics }) {
     // Matrix Size
+=======
+import { useState, useEffect } from "react";
+import  {get_color_code_from_id, get_image_str_from_id, get_hover_color_code_from_id} from "../../game/game_logic_helpers";
+import Designed_Button from "../../global_helpers/Button"
+import GameTimer from "../../global_helpers/GameTimer"
+import {endGame, updateCorrectSelection, updateWrongSelection, resetGameState, addButtonToClickedSet, updateInvalidSelection, updateStreak, updateTimeBetweenSelection} from "./GameFieldHelpers";
+
+
+export default function GameField({ setGameRunning, setMetrics, user }) {
+    // Matrix Size 
+>>>>>>> ce898ae (Got authentication to work with DynamoDB & the metrics lambda)
     const rows = 3;
     const columns = 4;
     const timePerRound = 10;
@@ -27,6 +39,7 @@ export default function GameField({ setGameRunning, setMetrics }) {
     const [roundTimePerSelection, setRoundTimePerSelection] = useState([]);
 
     const [isGameEnded, setIsGameEnded] = useState(false);
+    const [gameInitialized, setGameInitialized] = useState(false);
 
     // Function to hide a button by its ID
     const hideButton = (buttonId) => {
@@ -60,8 +73,10 @@ export default function GameField({ setGameRunning, setMetrics }) {
         startTime,
         timePerSelection,
         isGameEnded,
+        user
     };
 
+<<<<<<< HEAD
     // Call resetGameState on initial render or when dependencies change
     useEffect(() => {
         // Only call resetGameState once on mount, or when specific game state changes dictate a reset.
@@ -71,6 +86,17 @@ export default function GameField({ setGameRunning, setMetrics }) {
             resetGameState(context);
         }
     }, [promptMessage, context]); // Add context as a dependency if its contents change and trigger effects
+=======
+    useEffect(() => {
+        if (!gameInitialized) {
+            resetGameState(context);
+            setGameInitialized(true);
+        }
+    }, [gameInitialized]);
+
+    // Determines if the button pressed is a correct options and adds to metrics
+    function handleButtonClick(event) {
+>>>>>>> ce898ae (Got authentication to work with DynamoDB & the metrics lambda)
 
     // Determines if the button pressed is a correct option and adds to metrics
     // It now receives a 'parameters' object instead of a DOM 'event'
@@ -188,9 +214,13 @@ export default function GameField({ setGameRunning, setMetrics }) {
 
             {<GameTimer timeLimitInSeconds={60} onEnd={() => endGame(context)}/>}
 
+<<<<<<< HEAD
             <Text style={gameFieldStyles.promptMessageText}>
                 {promptMessage === '' ? resetGameState(context) : promptMessage}
             </Text>
+=======
+            <h2>{promptMessage || 'Loading...'}</h2>    
+>>>>>>> ce898ae (Got authentication to work with DynamoDB & the metrics lambda)
 
             {cardMatrix.length > 0 && <RenderCardMatrix card_matrix={cardMatrix}/>}
 

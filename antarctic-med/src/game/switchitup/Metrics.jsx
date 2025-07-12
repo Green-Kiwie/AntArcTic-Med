@@ -4,10 +4,11 @@ import Designed_Button from "../../components/DesignedButton"
 /**
  * Sends the metrics.
  */
-async function sendMetrics(metrics){
+async function sendMetrics(metrics, user){
     const apiUrl = process.env.REACT_APP_AWS_API_GATEWAY_URL;
 
     const validatedMetrics = {
+        user_id: user,
         total_number_of_wrong_selections: metrics.total_number_of_wrong_selections || 0,
         total_number_of_correct_selections: metrics.total_number_of_correct_selections || 0,
         time_from_start_of_game_to_end_of_game: metrics.time_from_start_of_game_to_end_of_game || 0,
@@ -28,7 +29,7 @@ async function sendMetrics(metrics){
             body: JSON.stringify(validatedMetrics),
         });
         
-        console.log("Response:", response);
+        // console.log("Response:", response);
 
         if(response.ok){
             console.log("Metrics sent!");
@@ -42,7 +43,7 @@ async function sendMetrics(metrics){
     }
 }
 
-export default function Metrics({ setGameRunning, metrics, setMetrics }) {
+export default function Metrics({ setGameRunning, metrics, setMetrics, user }) {
     /*
     Need to determine 3 different types
     1. longest streak of accurate presses (measure accuracy)
@@ -62,11 +63,12 @@ export default function Metrics({ setGameRunning, metrics, setMetrics }) {
     useEffect(() => {
         // console.log("useEffect triggered. Metrics:", metrics);
         // console.log("metricsSent:", metricsSent.current);
-        if(metrics && metrics.time_from_start_of_game_to_end_of_game > 0 && !metricsSent.current){
-            sendMetrics(metrics);
+
+        if(metrics && metrics.time_from_start_of_game_to_end_of_game > 0 && user && !metricsSent.current){
+            sendMetrics(metrics, user);
             metricsSent.current = true;
         }
-    }, [metrics]);
+    }, [metrics, user]);
 
     function resetMetrics() {
         setMetrics({
@@ -82,6 +84,7 @@ export default function Metrics({ setGameRunning, metrics, setMetrics }) {
             median_time_between_selections: 0,
             longest_streak: 0,
         });
+        metricsSent.current = false;
     }
 
     function resetGame(){

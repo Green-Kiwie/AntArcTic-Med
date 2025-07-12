@@ -21,7 +21,7 @@ import MatchStartScreen from "./matchitup/StartScreen";
  * Will display different component/"screen" depending on GameRunning.
  * Three different main "screens": <StartScreen>, <GameField>, <Metrics>
  */
-export default function SwitchItUp() {
+export default function SwitchItUp({ user }) {
 
     // Metrics useState
     const [metrics, setMetrics] = useState({
@@ -35,6 +35,7 @@ export default function SwitchItUp() {
         wrong_selection_missed_a_selection: 0,
         mean_time_between_selections: 0,
         median_time_between_selections: 0,
+        longest_streak: 0
     });
 
     const [gameRunning, setGameRunning] = useState("SwitchItUp Start");
@@ -43,17 +44,21 @@ export default function SwitchItUp() {
         // Returns game field if the game is running and the start screen otherwise.
         <>
             {gameRunning === "SwitchItUp Start" ? (
-                <StartScreen setGameRunning={setGameRunning} />
+                <StartScreen setGameRunning={setGameRunning}/>
             ): gameRunning === "MatchItUp Start" ? (
                 <MatchStartScreen setGameRunning={setGameRunning}/>
             ): gameRunning === "SwitchItUp Game" ? (
+<<<<<<< HEAD
                 <div className={"border-2 border-solid"}>
                     <GameField setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} />
                 </div>
+=======
+                <GameField setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} user={user} />
+>>>>>>> ce898ae (Got authentication to work with DynamoDB & the metrics lambda)
             ) : gameRunning === "MatchItUp Game" ? (
                 <MatchItUpGame setGameRunning={setGameRunning}></MatchItUpGame>
             ) : gameRunning === "metrics" ? (
-                <Metrics setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics}/>
+                <Metrics setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} user={user}/>
             ) : null}
         </>
 

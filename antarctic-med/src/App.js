@@ -31,7 +31,7 @@ import '@aws-amplify/ui-react/styles.css';
 import { getCurrentUser, signOut } from "aws-amplify/auth";
 
 
-console.log("Amplify config:", awsmobile);
+// console.log("Amplify config:", awsmobile);
 Amplify.configure({
   Auth: {
     Cognito: {
@@ -80,8 +80,14 @@ function App() {
             </Routes>
         </Router>
     );
+<<<<<<< HEAD
 =======
 function Game() {
+=======
+}
+
+function Game({ user }) {
+>>>>>>> ce898ae (Got authentication to work with DynamoDB & the metrics lambda)
     return (
         <PageLayout heading="Game">
             <CenteredComponent>
@@ -89,7 +95,7 @@ function Game() {
                     <div className="absolute top-0 left-0 w-full h-full bg-white" style={{
                         padding:'40px', textAlign:'center', borderRadius: '25px', overflowY: 'auto',
                     }}>
-                        <SwitchItUp />
+                        <SwitchItUp user={user} />
                     </div>
                 </div>
             </CenteredComponent>
@@ -188,10 +194,21 @@ function SignInPage() {
 function App() {
     const [ user, setUser ] = useState(null);
     useEffect(() => {
-        getCurrentUser()
-        .then(setUser)
-        .catch(() => setUser(null));
+        const fetchUser = async () => {
+            try{
+                const { userId } = await getCurrentUser();
+                setUser(userId);
+            }
+            catch(e){
+                setUser(null);
+            }
+        };
+        fetchUser();
     }, []);
+
+    // useEffect(() => {
+    //     console.log("userId changed:", user);
+    // }, [user]);
 
     const handleSignOut = async () => {
         await signOut();
@@ -203,7 +220,7 @@ function App() {
             <NavBar user={user} signOut={handleSignOut}/>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/game" element={<Game />} />
+                <Route path="/game" element={<Game user={user}/>} />
                 <Route path="/about" element={<About />} />
                 <Route path="/testing" element={<DevTesting />} />
                 <Route path="/metrics" element={<MetricsPage />} />
@@ -231,8 +248,8 @@ function SignInCallback({ setUser }) {
 
   useEffect(() => {
     getCurrentUser()
-      .then(user => {
-        setUser(user);
+      .then(({ userId }) => {
+        setUser(userId);
         nav("/account");
       })
       .catch(() => {nav("/");});
