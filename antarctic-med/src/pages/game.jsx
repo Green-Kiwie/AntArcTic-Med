@@ -7,10 +7,16 @@ export default function Game(){
         <>
             <CenteredComponent>
                 <NavBar />
-                    <div className="h-screen w-full bg-white px-60 py-20">
-                        <SwitchItUp />
-                    </div>
+                <GamePart />
             </CenteredComponent>
         </>
     );
+}
+
+function GamePart(){
+    return (
+        <div className="h-screen w-full bg-white px-60 py-20">
+            <SwitchItUp />
+        </div>
+    )
 }

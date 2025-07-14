@@ -1,4 +1,4 @@
-import Designed_Button from "../../global_helpers/Button";
+import Designed_Button from "../../components/DesignedButton";
 
 export default function MatchItUpGame({setGameRunning}) {
     /**In this game a image will appear for a random amount of seconds (3-10). The image will then disappear and the GameTimer

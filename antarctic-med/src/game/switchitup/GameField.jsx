@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"; // Import useEffect
 import { View, Text, StyleSheet } from 'react-native';
-import { get_color_code_from_id, get_image_str_from_id, get_hover_color_code_from_id } from "../../game/game_logic_helpers";
-import Designed_Button from "../../global_helpers/SwitchItUpButton"; // Your converted button
-import GameTimer from "../../global_helpers/GameTimer"; // Assuming this is also RN-Web compatible if it has UI
+import { get_color_code_from_id, get_image_str_from_id, get_hover_color_code_from_id } from "./GameLogicHelpers";
+import Designed_Button from "./SwitchItUpButton"; // Your converted button
+import GameTimer from "../globalLogicHelpers/GameTimer"; // Assuming this is also RN-Web compatible if it has UI
 import { endGame, updateCorrectSelection, updateWrongSelection, resetGameState, addButtonToClickedSet, updateInvalidSelection, updateStreak, updateTimeBetweenSelection } from "./GameFieldHelpers";
 
 export default function GameField({ setGameRunning, setMetrics }) {

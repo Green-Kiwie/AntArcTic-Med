@@ -8,11 +8,11 @@
 //   Card 1                     Card 2
 
 import {useState} from "react";
-import StartScreen from "../components/switchitup/StartScreen";
-import GameField from "../components/switchitup/GameField";
-import Metrics from "../components/switchitup/Metrics";
-import MatchItUpGame from "../components/matchitup/GameField";
-import MatchStartScreen from "../components/matchitup/StartScreen";
+import StartScreen from "./switchitup/StartScreen";
+import GameField from "./switchitup/GameField";
+import Metrics from "./switchitup/Metrics";
+import MatchItUpGame from "./matchitup/GameField";
+import MatchStartScreen from "./matchitup/StartScreen";
 
 // import TaskSelector from './game_logic_helpers';
 

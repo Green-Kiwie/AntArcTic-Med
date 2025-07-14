@@ -35,7 +35,9 @@ function IntroductoryTextWithStyling(){
             <div className="absolute inset-0bg-black opacity-20"></div>
             <div className="absolute top-0 left-0 right-0 h-36 bg-gradient-to-b from-white to-transparent"></div>
 
-            <IntroductoryText />
+            <div className="absolute top-[25%] w-full">
+                <IntroductoryText />
+            </div>
         </div>
     )
 }
@@ -47,11 +49,13 @@ function IntroductoryBanner(){
             style={{
                 backgroundImage: `url(${process.env.PUBLIC_URL}/group_photo1.jpg)`,
             }}>
+                
             <IntroductoryTextWithStyling />
 
         </div>
     )
 }
+
 
 function PurposeStatement(){
     return (

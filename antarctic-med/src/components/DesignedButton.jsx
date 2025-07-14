@@ -5,8 +5,6 @@
 function Designed_Button({id, content, onClick, onClickParameters, disable,
                             colorClass = "bg-sky-400", hoverColorClass = "hover:bg-sky-400", size = 'base'}) {
 
-    
-
     const color_text = `${colorClass} ${hoverColorClass}`
     return (
         <button

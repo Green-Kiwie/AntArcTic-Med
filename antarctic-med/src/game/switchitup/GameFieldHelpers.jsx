@@ -1,5 +1,5 @@
-import  { selectCurrentTask, selectCardValues, get_color_id_from_id, get_image_id_from_id} from "../../game/game_logic_helpers";
-import {getMedian} from "../../global_helpers/utils" 
+import  { selectCurrentTask, selectCardValues, get_color_id_from_id, get_image_id_from_id} from "./GameLogicHelpers";
+import {getMedian} from "../globalLogicHelpers/MathUtils" 
 
 export function updateCorrectSelection(context) {
     const {setMetrics} = context;

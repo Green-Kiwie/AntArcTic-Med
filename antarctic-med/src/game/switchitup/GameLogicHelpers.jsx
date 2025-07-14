@@ -1,4 +1,4 @@
-import { getRandomInt } from '../global_helpers/utils';
+import { getRandomInt } from '../globalLogicHelpers/MathUtils';
 
 // Four main functions here to export and use:
 // 1. selectCurrentTask: will generate a prompt with corresponding prompt id

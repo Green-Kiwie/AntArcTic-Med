@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import Designed_Button from "../../global_helpers/Button"
+import Designed_Button from "../../components/DesignedButton"
 
 /**
  * Sends the metrics.

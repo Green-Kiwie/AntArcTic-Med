@@ -1,4 +1,4 @@
-import Designed_Button from "../../global_helpers/Button"
+import Designed_Button from "../../components/DesignedButton"
 
 export default function MatchStartScreen({setGameRunning}) {
     function Instructions() {

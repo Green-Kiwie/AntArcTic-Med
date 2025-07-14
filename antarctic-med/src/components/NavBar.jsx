@@ -37,14 +37,3 @@ export default function Navbar() {
         </nav>
     );
 }
-
-
-// <Link to="/">
-//     <img
-//         src={`${process.env.PUBLIC_URL}/org_logo2.png`}
-//         alt="Logo"
-//         width={35}
-//         height={35}
-//         className="cursor-pointer mx-4"
-//     />
-// </Link>
