@@ -48,13 +48,9 @@ export default function SwitchItUp({ user }) {
             ): gameRunning === "MatchItUp Start" ? (
                 <MatchStartScreen setGameRunning={setGameRunning}/>
             ): gameRunning === "SwitchItUp Game" ? (
-<<<<<<< HEAD
                 <div className={"border-2 border-solid"}>
-                    <GameField setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} />
+                    <GameField setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} user={user} />
                 </div>
-=======
-                <GameField setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} user={user} />
->>>>>>> ce898ae (Got authentication to work with DynamoDB & the metrics lambda)
             ) : gameRunning === "MatchItUp Game" ? (
                 <MatchItUpGame setGameRunning={setGameRunning}></MatchItUpGame>
             ) : gameRunning === "metrics" ? (

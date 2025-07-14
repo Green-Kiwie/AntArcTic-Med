@@ -1,22 +1,20 @@
 import CenteredComponent from "../components/CenteredComponent";
 import SwitchItUp from '../game/SwitchItUp';
-import NavBar from "../components/NavBar";
 
-export default function Game(){
+export default function Game({ user }){
     return (
         <>
             <CenteredComponent>
-                <NavBar />
-                <GamePart />
+                <GamePart user={user}/>
             </CenteredComponent>
         </>
     );
 }
 
-function GamePart(){
+function GamePart({ user }){
     return (
         <div className="h-screen w-full bg-white px-60 py-20">
-            <SwitchItUp />
+            <SwitchItUp user={user}/>
         </div>
     )
 }

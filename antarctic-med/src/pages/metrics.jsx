@@ -1,10 +1,8 @@
-import NavBar from '../components/NavBar';
 import CenteredComponent from "../components/CenteredComponent";
 
 export default function MetricsPage() {
 	return (
         <CenteredComponent>
-            <NavBar />
            <div className="pt-24 text-center text-lg px-4">
                 <p>
                     The average metrics will go here when we get them from AWS.

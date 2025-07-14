@@ -1,12 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import NavBar from "../components/NavBar"
 import CenteredComponent from "../components/CenteredComponent";
 
 export default function Home() {
     return (
         <>
-            <NavBar />
-
             <CenteredComponent>
                 <IntroductoryBanner />
             </CenteredComponent>
