@@ -1,16 +1,19 @@
 import { Link, useLocation } from "react-router-dom";
+import { signInWithRedirect } from "aws-amplify/auth";
 
-export default function Navbar() {
+export default function Navbar({ user, userLoading, signOut }) {
     const location = useLocation();
     const currentPath = location.pathname;
+
+    if(userLoading) return null;
 
     return (
         <nav className="absolute top-0 w-full z-10">
             <div className="flex justify-center items-center p-4 max-w-screen-2xl mx-auto">
                 <div className="flex space-x-6 text-xl" style={{ fontSize: "3vmin" }}>
                     <Link
-                        to="/home"
-                        className={`hover:text-blue-600 ${currentPath === '/home' ? 'font-bold' : ''}`}
+                        to="/"
+                        className={`hover:text-blue-600 ${currentPath === '/' ? 'font-bold' : ''}`}
                     >
                         Home
                     </Link>
@@ -32,6 +35,27 @@ export default function Navbar() {
                     >
                         Metrics
                     </Link>
+                    {!user && (
+                        <button
+                            onClick={() => signInWithRedirect()}
+                            className="hover:text-blue-600"
+                            style={{ background: "none", border: "none", cursor: "pointer" }}
+                        >
+                            Sign In
+                        </button>
+                    )}
+                    {user && (
+                        <>
+                            <Link to="/account" className="hover:text-blue-600">Account</Link>
+                            <button
+                                onClick={signOut}
+                                className="hover:text-blue-600"
+                                style={{ background: "none", border: "none", cursor: "pointer" }}
+                            >
+                                Sign Out
+                            </button>
+                        </>
+                    )}
                 </div>
             </div>
         </nav>

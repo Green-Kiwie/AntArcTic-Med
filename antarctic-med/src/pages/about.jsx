@@ -1,12 +1,10 @@
 
-import NavBar from "../components/NavBar";
 import TeamSection from "../components/TeamSection";
 import CenteredComponent from "../components/CenteredComponent";
 
 export default function About(){
     return (
         <>
-            <NavBar />
             <CenteredComponent>
                 <IntroductoryBanner />
                 
