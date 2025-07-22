@@ -1,5 +1,6 @@
 import CenteredComponent from "../components/CenteredComponent";
 import SwitchItUp from '../game/SwitchItUp';
+import Pets from "../game/petsgame/Pets";
 
 export default function Game({ user }){
     return (
@@ -15,6 +16,7 @@ function GamePart({ user }){
     return (
         <div className="h-screen w-full bg-white px-60 py-20">
             <SwitchItUp user={user}/>
+            <Pets></Pets>
         </div>
     )
 }
