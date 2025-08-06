@@ -6,7 +6,6 @@
 
 import './App.css';
 import NavBar from './components/NavBar';
-import CenteredComponent from "./components/CenteredComponent";
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
@@ -19,7 +18,8 @@ import { Amplify } from 'aws-amplify';
 import awsmobile from './aws-exports.js';
 import '@aws-amplify/ui-react/styles.css';
 import { getCurrentUser, signOut } from "aws-amplify/auth";
-
+import ProfilePage from './pages/profile.jsx';
+import PetPage from './pages/pet.jsx';
 
 // console.log("Amplify config:", awsmobile);
 Amplify.configure({
@@ -82,21 +82,13 @@ function App() {
                 <Route path="/testing" element={<DevTesting />} />
                 <Route path="/metrics" element={<MetricsPage user={user}/>} />
                 <Route path="/signin" element={<SignInCallback setUser={setUser} />} />
-                <Route path="/account" element={<AccountPage user={user} />} />
+                <Route path="/profile" element={<ProfilePage user={user} />} />
+                <Route path="/pet" element={<PetPage />} />
             </Routes>
         </Router>
   );
 }
 
-function AccountPage({ user }){
-    return (
-        <CenteredComponent>
-            <div className="pt-24 text-center text-lg px-4">
-                {user ? <h2>Welcome.</h2> : <p>Sign in to save progress and manage sessions.</p>}
-            </div>
-        </CenteredComponent>
-    )
-}
 
 function SignInCallback({ setUser }) {
   const nav = useNavigate();

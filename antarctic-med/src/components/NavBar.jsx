@@ -35,6 +35,12 @@ export default function Navbar({ user, userLoading, signOut }) {
                     >
                         Metrics
                     </Link>
+                    <Link
+                        to="/pet"
+                        className={`hover:text-blue-600 ${currentPath === '/metrics' ? 'font-bold' : ''}`}
+                    >
+                        Pet
+                    </Link>
                     {!user && (
                         <button
                             onClick={() => signInWithRedirect()}
@@ -46,7 +52,7 @@ export default function Navbar({ user, userLoading, signOut }) {
                     )}
                     {user && (
                         <>
-                            <Link to="/account" className="hover:text-blue-600">Account</Link>
+                            <Link to="/profile" className="hover:text-blue-600">Profile</Link>
                             <button
                                 onClick={signOut}
                                 className="hover:text-blue-600"
