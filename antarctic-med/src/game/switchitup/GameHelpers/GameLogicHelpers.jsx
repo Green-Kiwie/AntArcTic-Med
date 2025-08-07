@@ -1,4 +1,4 @@
-import { getRandomInt } from '../globalLogicHelpers/MathUtils';
+import { getRandomInt } from '../../globalLogicHelpers/MathUtils';
 
 // Four main functions here to export and use:
 // 1. selectCurrentTask: will generate a prompt with corresponding prompt id
@@ -17,6 +17,13 @@ function get_color_list(){ //change these values to change color options
             3: ["green", "bg-green-300", "hover:bg-green-600"]};//0 will be reserved for if unselected 1: red, 2: blue, 3: green
 }
 
+export function ColorIdEqual(id1, id2){
+    return get_color_id_from_id(id1) === get_color_id_from_id(id2)
+}
+
+export function ImageIdEqual(id1, id2){
+    return get_image_id_from_id(id1) === get_image_id_from_id(id2)
+}
 
 /**
  * Randomly selects from our pool of tasks and creates a prompt.
@@ -77,25 +84,14 @@ export function get_image_str_from_id(card_id){
     return image_list[image_id];
 }
 
-export function get_color_id_from_id(id){
+
+function get_color_id_from_id(id){
     return Math.floor(id / 100);
 }
 
-export function get_image_id_from_id(id){
+function get_image_id_from_id(id){
     return id%100;
 }
-
-// //testing code for selectCurrentTask
-// const [prompt_id, prompt_message] = selectCurrentTask();
-// console.log("Generated Prompt ID:", prompt_id);
-// console.log("Generated Prompt Message:", prompt_message);
-
-// //testing code for selectCardValues
-// const [card_matrix, correct_locations] = selectCardValues(prompt_id, 4, 3);
-// console.log("Card matrix:");
-// console.log(card_matrix);
-// console.log("Correct locations:");
-// console.log(correct_locations);
 
 function make_card_matrix(correct_card_locations, rows, columns, color_id, image_id){
     let card_matrix = []

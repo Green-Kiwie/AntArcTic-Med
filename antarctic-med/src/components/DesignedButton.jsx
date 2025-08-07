@@ -2,7 +2,7 @@
 // Example use:
 // <Button content="Go to about" link="/about" />
 
-function Designed_Button({id, content, onClick, onClickParameters, disable,
+function DesignedButton({id, content, onClick, onClickParameters, disable,
                             colorClass = "bg-sky-400", hoverColorClass = "hover:bg-sky-400", size = 'base'}) {
 
     const color_text = `${colorClass} ${hoverColorClass}`
@@ -23,4 +23,4 @@ function Designed_Button({id, content, onClick, onClickParameters, disable,
     );
 }
 
-export default Designed_Button;
+export default DesignedButton;
