@@ -3,9 +3,15 @@
 // <Button content="Go to about" link="/about" />
 
 function DesignedButton({id, content, onClick, onClickParameters, disable,
-                            colorClass = "bg-sky-400", hoverColorClass = "hover:bg-sky-400", size = 'base'}) {
+                            colorClass = "bg-sky-400", hoverColorClass = "hover:bg-sky-400", 
+                            size = 'base', className = "default"}) {
 
     const color_text = `${colorClass} ${hoverColorClass}`
+    if (className === "default") {
+        className = `${color_text} text-white hover:text-sky-800
+            px-8 py-4 inline-block text-center shadow-lg
+            font-semibold text-${size} transition duration-300 ease-in-out transform hover:scale-105`;
+    }
     return (
         <button
             // href={link}
@@ -13,9 +19,7 @@ function DesignedButton({id, content, onClick, onClickParameters, disable,
             target="_blank" rel="noreferrer"
             onClick={(event) => onClick(event, onClickParameters)} // To get the id for search for correct card
             disabled={disable}
-            className={`${color_text} text-white hover:text-sky-800
-             px-8 py-4 inline-block text-center shadow-lg
-             font-semibold text-${size} transition duration-300 ease-in-out transform hover:scale-105`}
+            className={className}
             style={{ borderRadius: "25px" }}
         >
             {content}
