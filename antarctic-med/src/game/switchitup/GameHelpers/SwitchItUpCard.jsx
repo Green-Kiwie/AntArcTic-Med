@@ -33,7 +33,7 @@ const FONT_SIZE_MAP = {
     // Add more font sizes if desired
 };
 
-function Designed_Button({
+function SwitchItUpCard({
                              id,
                              content,
                              onClick,
@@ -110,4 +110,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Designed_Button;
+export default SwitchItUpCard;

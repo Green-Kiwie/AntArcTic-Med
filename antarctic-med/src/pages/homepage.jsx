@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import CenteredComponent from "../components/CenteredComponent";
+import DesignedButton from "../components/DesignedButton";
 
 export default function Home() {
     return (
@@ -58,16 +59,14 @@ function LinkToGameButton(){
     const navigate = useNavigate();
 
     return (
-        <button
+        <DesignedButton
             onClick={() => navigate("/game")}
-            target="_blank" rel="noreferrer"
             className={`text-white hover:text-sky-800 bg-sky-400
                     my-8 px-10 py-3 inline-block text-center shadow-lg
                     font-semibold text-2xl transition duration-300 ease-in-out transform hover:scale-105`}
-            style={{ borderRadius: "25px" }}
-        >
-            Game
-        </button>
+            content="Game"
+        />
+        
     )
 }
 

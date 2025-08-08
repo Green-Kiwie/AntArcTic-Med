@@ -1,4 +1,4 @@
-import Designed_Button from "../../components/DesignedButton"
+import DesignedButton from "../../components/DesignedButton"
 
 export default function StartScreen({ setGameRunning }) {
 
@@ -6,9 +6,9 @@ export default function StartScreen({ setGameRunning }) {
     return (
         <div>
             <div className={"py-5"}>
-                <Designed_Button
+                <DesignedButton
                     onClick={() => setGameRunning("SwitchItUp Game")} content={"Start Game"} size={"2xl"}>
-                </Designed_Button>
+                </DesignedButton>
             </div>
             {/* <Designed_Button onClick={() => setGameRunning("MatchItUp Start")} content={"Switch to MatchItUp"}/> */}
             <p>
@@ -33,4 +33,3 @@ export default function StartScreen({ setGameRunning }) {
         </div>
     )
 }
-//Hello

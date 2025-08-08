@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import Designed_Button from "../../components/DesignedButton"
+import DesignedButton from "../../components/DesignedButton"
 
 /**
  * Sends the metrics.
@@ -106,11 +106,11 @@ export default function Metrics({ setGameRunning, metrics, setMetrics, user }) {
             </ul> 
 
             {/* Example button to update game state */}
-            <Designed_Button 
+            <DesignedButton 
                 onClick={() => resetGame()}
                 content="Play Again"
             >
-            </Designed_Button>
+            </DesignedButton>
         </div>
     )
 }

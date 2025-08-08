@@ -11,22 +11,25 @@ export default function MemberCard({ name, role, imageUrl }) {
     );
 }
 
-function CardImage(name, imageUrl){
+function CardImage({ name, imageUrl }) {
     return (
         <img
             src={imageUrl || "https://placehold.co/400x400/E0F2F7/2563EB?text=Profile"}
             alt={name}
             className="w-full h-60 object-cover"
-            onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x400/E0F2F7/2563EB?text=Profile"; }} // Fallback on error
+            onError={(e) => { 
+                e.target.onerror = null; 
+                e.target.src = "https://placehold.co/400x400/E0F2F7/2563EB?text=Profile"; 
+            }}
         />
-    )
+    );
 }
 
-function CardText(name, role){
+function CardText({ name, role }) {
     return (
         <div className="p-4 text-center">
             <h3 className="text-xl font-semibold text-gray-800 mb-1">{name}</h3>
             <p className="text-sky-600 text-sm">{role}</p>
         </div>
-    )
+    );
 }
