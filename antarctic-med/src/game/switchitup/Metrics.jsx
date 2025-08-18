@@ -4,11 +4,11 @@ import DesignedButton from "../../components/DesignedButton"
 /**
  * Sends the metrics.
  */
-async function sendMetrics(metrics, user){
+async function sendMetrics(metrics, userId){
     const apiUrl = process.env.REACT_APP_AWS_API_GATEWAY_URL;
 
     const validatedMetrics = {
-        user_id: user,
+        user_id: userId,
         total_number_of_wrong_selections: metrics.total_number_of_wrong_selections || 0,
         total_number_of_correct_selections: metrics.total_number_of_correct_selections || 0,
         time_from_start_of_game_to_end_of_game: metrics.time_from_start_of_game_to_end_of_game || 0,
@@ -35,11 +35,11 @@ async function sendMetrics(metrics, user){
             console.log("Metrics sent!");
         }
         else{
-            console.log("Error sending metrics: ", response.statusText);
+            console.log("Error sending metrics");
         }
     }
     catch(error){
-        console.log("Error sending metrics: ", error);
+        console.log("Error sending metrics");
     }
 }
 
@@ -64,8 +64,9 @@ export default function Metrics({ setGameRunning, metrics, setMetrics, user }) {
         // console.log("useEffect triggered. Metrics:", metrics);
         // console.log("metricsSent:", metricsSent.current);
 
-        if(metrics && metrics.time_from_start_of_game_to_end_of_game > 0 && user && !metricsSent.current){
-            sendMetrics(metrics, user);
+        const userId = user?.username || '';
+        if(metrics && metrics.time_from_start_of_game_to_end_of_game > 0 && userId && !metricsSent.current){
+            sendMetrics(metrics, userId);
             metricsSent.current = true;
         }
     }, [metrics, user]);

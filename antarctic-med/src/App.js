@@ -50,7 +50,7 @@ function App() {
     useEffect(() => {
         const fetchUser = async () => {
             try{
-                const { userId } = await getCurrentUser();
+                const userId = await getCurrentUser();
                 setUser(userId);
             }
             catch(e){
@@ -82,7 +82,7 @@ function App() {
                 <Route path="/testing" element={<DevTesting />} />
                 <Route path="/metrics" element={<MetricsPage user={user}/>} />
                 <Route path="/signin" element={<SignInCallback setUser={setUser} />} />
-                <Route path="/profile" element={<ProfilePage user={user} />} />
+                <Route path="/profile" element={<ProfilePage user={user} signOut={handleSignOut} />} />
                 <Route path="/pet" element={<PetPage />} />
             </Routes>
         </Router>
@@ -97,7 +97,7 @@ function SignInCallback({ setUser }) {
     getCurrentUser()
       .then(({ userId }) => {
         setUser(userId);
-        nav("/account");
+        nav("/profile");
       })
       .catch(() => {nav("/");});
   }, [setUser, nav]);
