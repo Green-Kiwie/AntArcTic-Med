@@ -83,7 +83,7 @@ function App() {
                 <Route path="/metrics" element={<MetricsPage user={user}/>} />
                 <Route path="/signin" element={<SignInCallback setUser={setUser} />} />
                 <Route path="/profile" element={<ProfilePage user={user} signOut={handleSignOut} />} />
-                <Route path="/pet" element={<PetPage />} />
+                {/* <Route path="/pet" element={<PetPage />} />  pet page is still in the works*/}
             </Routes>
         </Router>
   );

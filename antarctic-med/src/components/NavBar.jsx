@@ -35,12 +35,12 @@ export default function Navbar({ user, userLoading, signOut }) {
                     >
                         Metrics
                     </Link>
-                    <Link
+                    {/* <Link
                         to="/pet"
                         className={`hover:text-blue-600 ${currentPath === '/metrics' ? 'font-bold' : ''}`}
                     >
                         Pet
-                    </Link>
+                    </Link> */}
                     {!user && (
                         <button
                             onClick={() => signInWithRedirect()}

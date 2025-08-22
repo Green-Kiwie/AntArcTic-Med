@@ -10,10 +10,33 @@ export default function Home() {
             </CenteredComponent>
 
             <CenteredComponent>
+                <ResearchBasedGameText />
+            </CenteredComponent>
+
+            <CenteredComponent>
                 <SwitchItUpBanner />
             </CenteredComponent>
         </>
     );
+}
+
+function ResearchBasedGameText(){
+    return (
+        <div
+            className="relative w-full h-screen p-6 text-white bg-sky-950" >
+
+                <h2 className="text-4xl font-bold mb-2 text-left">Research Backed Games</h2>
+                <p className={"text-3xl text-left"}>
+                Computerized cognitive training programs have demonstrated potential benefits for individuals with MCI and early-stage Aziehmers, 
+                by enhancing engagement and therapeutic outcomes (Lampit et al., 2014; Hill et al., 2017).
+                Through gamification, we leverage intrinsic motivation, 
+                reward systems and adaptive difficulty to promote interest in cognitive training activities. 
+                Digital game-based interventions can improve cognitive functions in older adults with cognitive impairments,
+                in particular, executive function, attention, and memory (Zuo et al., 2024).
+                </p>
+
+        </div>
+    )
 }
 
 function SwitchItUpBanner(){

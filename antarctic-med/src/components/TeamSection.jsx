@@ -116,7 +116,7 @@ const CSPresident = {
 
 const BioPresident = {
     name: "Arnav Chandan",
-    role: "President??",
+    role: "President",
     imageUrl: `${process.env.PUBLIC_URL}/images/team/arnav.jpg`
 }
 
