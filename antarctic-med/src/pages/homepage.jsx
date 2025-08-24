@@ -24,17 +24,38 @@ function ResearchBasedGameText(){
     return (
         <div
             className="relative w-full h-screen p-6 text-white bg-sky-950" >
+            
+            <div className="flex flex-col md:flex-row gap-4 p-20 justify-center items-center">
+                <ResearchBasedDescription />
 
-                <h2 className="text-4xl font-bold mb-2 text-left">Research Backed Games</h2>
-                <p className={"text-3xl text-left"}>
-                Computerized cognitive training programs have demonstrated potential benefits for individuals with MCI and early-stage Aziehmers, 
-                by enhancing engagement and therapeutic outcomes (Lampit et al., 2014; Hill et al., 2017).
-                Through gamification, we leverage intrinsic motivation, 
-                reward systems and adaptive difficulty to promote interest in cognitive training activities. 
-                Digital game-based interventions can improve cognitive functions in older adults with cognitive impairments,
-                in particular, executive function, attention, and memory (Zuo et al., 2024).
-                </p>
+                <ResearchBasedImage />
 
+            </div>
+
+        </div>
+    )
+}
+
+function ResearchBasedDescription(){
+    return (
+        <div className="w-full md:w-4/5 p-6 rounded-lg">
+            <h2 className="text-4xl font-bold mb-2 text-left">Research Backed Games</h2>
+            <p className={"text-3xl text-left"}>
+            We're developing targeted games to engage the main domains affected by Alzheimer's and Mild Cognitive Impairment (MCI). 
+            Our games focus on the core cognitive skills assessed by the Mini-Mental State Examination (MMSE), 
+            which include memory, attention, language, executive function and visuospatial skills, 
+            to provide an effective tool for patient engagement.
+            </p>
+        </div>
+    )
+}
+
+function ResearchBasedImage(){
+    return (
+        <div>
+            <div className="w-full md:w-1/2  p-6 rounded-lg ">
+                <img src={`${process.env.PUBLIC_URL}/MMSE_diagram.jpg`} alt="Logo"/>
+            </div>
         </div>
     )
 }
