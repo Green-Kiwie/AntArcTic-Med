@@ -23,13 +23,11 @@ export default function Home() {
 function ResearchBasedGameText(){
     return (
         <div
-            className="relative w-full h-screen p-6 text-white bg-sky-950" >
+            className="relative w-full min-h-screen p-6 text-white bg-sky-950 flex justify-center items-center">
             
-            <div className="flex flex-col md:flex-row gap-4 p-20 justify-center items-center">
+            <div className="flex flex-col lg:flex-row gap-14 p-4 lg:p-20 justify-center items-center w-full">
                 <ResearchBasedDescription />
-
                 <ResearchBasedImage />
-
             </div>
 
         </div>
@@ -38,11 +36,11 @@ function ResearchBasedGameText(){
 
 function ResearchBasedDescription(){
     return (
-        <div className="w-full md:w-4/5 p-6 rounded-lg">
+        <div className="w-full md:w-7/12 p-6 rounded-lg">
             <h2 className="text-4xl font-bold mb-2 text-left">Research Backed Games</h2>
             <p className={"text-3xl text-left"}>
             We're developing targeted games to engage the main domains affected by Alzheimer's and Mild Cognitive Impairment (MCI). 
-            Our games focus on the core cognitive skills assessed by the Mini-Mental State Examination (MMSE), 
+            Our games focus on the core cognitive skills assessed by the <strong>Mini-Mental State Examination (MMSE)</strong>, 
             which include memory, attention, language, executive function and visuospatial skills, 
             to provide an effective tool for patient engagement.
             </p>
@@ -53,8 +51,34 @@ function ResearchBasedDescription(){
 function ResearchBasedImage(){
     return (
         <div>
-            <div className="w-full md:w-1/2  p-6 rounded-lg ">
-                <img src={`${process.env.PUBLIC_URL}/MMSE_diagram.jpg`} alt="Logo"/>
+            <div className="w-full p-6 rounded-lg ">
+            
+                <div className="flex items-center relative">
+                    <img className={"w-20"} src={`${process.env.PUBLIC_URL}/icons/compass.png`} alt="Logo"/>
+                    <p className="px-10 text-3xl font-bold">Orientation</p>
+                </div>
+
+
+                <div className="flex items-center">
+                    <img className={"w-20"} src={`${process.env.PUBLIC_URL}/icons/card.png`} alt="Logo"/>
+                    <p className="px-10 text-3xl font-bold">Registration</p>
+                </div>
+
+                <div className="flex items-center">
+                    <img className={"w-20"} src={`${process.env.PUBLIC_URL}/icons/warning.png`} alt="Logo"/>
+                    <p className="px-10 text-3xl font-bold">Attention</p>
+                </div>
+
+                <div className="flex items-center">
+                    <img className={"w-20"} src={`${process.env.PUBLIC_URL}/icons/clock.png`} alt="Logo"/>
+                    <p className="px-10 text-3xl font-bold">Recall</p>
+                </div>
+
+                <div className="flex items-center">
+                    <img className={"w-20"} src={`${process.env.PUBLIC_URL}/icons/textbubble.png`} alt="Logo"/>
+                    <p className="px-10 text-3xl font-bold">Language</p>
+                </div>
+
             </div>
         </div>
     )
@@ -67,10 +91,9 @@ function SwitchItUpBanner(){
 
             <div className="flex flex-col md:flex-row gap-4 p-20 justify-center items-center">
                 {/* Column 1 */}
-                <SwitchItUpDescription />
-
-                {/* Column 2 */}
                 <SwitchItUpImageMockUp />
+                {/* Column 2 */}
+                <SwitchItUpDescription />
             </div>
 
         </div>
