@@ -25,7 +25,13 @@ jobs:
         run: ls antarctic-med
 
       - name: Set environment variable
-        run: echo "REACT_APP_AWS_API_GATEWAY_URL=${{ secrets.REACT_APP_AWS_API_GATEWAY_URL }}" >> $GITHUB_ENV
+        run: |
+          echo "REACT_APP_AWS_API_GATEWAY_URL=${{ secrets.REACT_APP_AWS_API_GATEWAY_URL }}" >> $GITHUB_ENV
+          echo "REACT_APP_AWS_USER_POOLS_ID=${{ secrets.REACT_APP_AWS_USER_POOLS_ID }}" >> $GITHUB_ENV
+          echo "REACT_APP_AWS_USER_POOLS_WEB_CLIENT_ID=${{ secrets.REACT_APP_AWS_USER_POOLS_WEB_CLIENT_ID }}" >> $GITHUB_ENV
+          echo "REACT_APP_DOMAIN=${{ secrets.REACT_APP_DOMAIN }}" >> $GITHUB_ENV
+          echo "REACT_APP_CALLBACK_SIGNIN=${{ secrets.REACT_APP_CALLBACK_SIGNIN }}" >> $GITHUB_ENV
+          echo "AWS_API_GATEWAY_URL=${{ secrets.AWS_API_GATEWAY_URL }}" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: npm install
