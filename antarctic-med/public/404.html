@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+    <script>
+      // Rewrite the URL to use the index.html page while preserving the path
+      (function() {
+        const path = window.location.pathname
+        const search = window.location.search
+        const hash = window.location.hash
+        const newUrl = '/' + '?' + 'redirect=' + encodeURIComponent(path + search + hash)
+        window.location.replace(newUrl)
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>
