@@ -1,4 +1,5 @@
 import {selectCurrentTask, ColorIdEqual, ImageIdEqual, selectCardValues} from "./GameLogicHelpers"; 
+import { playSound, sounds } from "../../sounds/sounds.js";
 
 export function handleViewContainerClick(e, context){
     if (e.target.closest('button')) return;
@@ -78,6 +79,8 @@ function updateStreak(context, clickCorrect){
 }
 
 function updateCorrectSelection(context, buttonId) {
+    playSound(sounds.success);
+
     const { setMetrics, setNumOfCorrect, numOfCorrect } = context;
 
     hideButton(buttonId, context);
@@ -91,6 +94,7 @@ function updateCorrectSelection(context, buttonId) {
     }));
 
     if (isRoundComplete(newCount, context)) {
+        playSound(sounds.success);
         resetGameState(context);
         context.setNumOfCorrect(0);
     }
@@ -101,6 +105,8 @@ function isRoundComplete(newCount, context){
 }
 
 function updateWrongSelection(context, clickContext, buttonId) {
+    playSound(sounds.fail);
+
     const { setMetrics, cardMatrix, promptID } = context;
     const { clickedRow, clickedCol } = clickContext;
     const clickedID = cardMatrix[clickedRow][clickedCol];

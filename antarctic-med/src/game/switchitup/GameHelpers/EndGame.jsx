@@ -1,5 +1,6 @@
 import DesignedButton from "../../../components/DesignedButton";
-import {getMedian} from "../../globalLogicHelpers/MathUtils" 
+import {getMedian} from "../../globalLogicHelpers/MathUtils"
+import { playSound, sounds } from "../../sounds/sounds.js";
 
 export function EndGameButton({context}){
     return (
@@ -19,6 +20,8 @@ export function endGame(context){
 
     if(isGameEnded) return;
     setIsGameEnded(true);
+
+    playSound(sounds.gameover);
 
     setMetrics(prev => updateMetricsForEndgame(
         prev, {
