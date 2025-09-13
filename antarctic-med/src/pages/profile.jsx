@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import CenteredComponent from "../components/CenteredComponent";
-import { deleteUser, fetchUserAttributes, signOut } from '@aws-amplify/auth';
+import { deleteUser, fetchUserAttributes, signOut, updateUserAttributes } from '@aws-amplify/auth';
 import { useNavigate } from "react-router-dom";
 
 export default function ProfilePage({ user }){
     const [userDetails, setUserDetails] = useState({});
+    const [conditions, setConditions] = useState('');
+    const [notes, setNotes] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -12,6 +14,8 @@ export default function ProfilePage({ user }){
             try{
                 const attributes = await fetchUserAttributes();
                 setUserDetails(attributes);
+                setConditions(attributes["custom:conditions"] || '');
+                setNotes(attributes["custom:notes"] || '');
             } 
             catch (e){
             console.error("Error fetching user attributes:", e);
@@ -32,7 +36,22 @@ export default function ProfilePage({ user }){
         catch (e){
             console.error("Error deleting account:", e);
             alert("Failed to delete account. Please try again.");
+        }
     }
+
+    async function handleSave() {
+        try{
+            await updateUserAttributes({
+                userAttributes: {
+                    'custom:conditions': conditions,
+                    'custom:notes': notes,
+                }
+            });
+        }
+        catch (e){
+            console.error("Error saving details:", e);
+            alert("Failed to update profile.");
+        }
     }
 
     if(!user){
@@ -59,6 +78,10 @@ export default function ProfilePage({ user }){
                 <p><span className="font-bold">Gender:</span> {userDetails.gender}</p>
                 <p><span className="font-bold">Email:</span> {userDetails.email}</p>
                 <p><span className="font-bold">Birthday:</span> {userDetails.birthdate}</p>
+                <br></br>
+                <textarea className="w-full border rounded p-2" rows="3" placeholder="Enter patient medical conditions" value={conditions} onChange={(e) => setConditions(e.target.value)}/>
+                <textarea className="w-full border rounded p-2" rows="3" placeholder="Enter additional patient notes" value={notes} onChange={(e) => setNotes(e.target.value)}/>
+                <button className="w-full px-4 py-3 rounded-lg bg-green-400 text-white hover:bg-green-500 transition mb-4" onClick={handleSave}> Save Notes </button>
             </div>
 
             <div className="flex-1 bg-white shadow-lg rounded-lg p-8 space-y-4">
