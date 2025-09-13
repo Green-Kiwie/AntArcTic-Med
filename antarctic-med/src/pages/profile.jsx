@@ -55,8 +55,10 @@ export default function ProfilePage({ user }){
             <div className="flex flex-col md:flex-row gap-8 p-12 w-full max-w-5xl">
             <div className="flex-1 bg-white shadow-lg rounded-lg p-8">
                 <h2 className="text-2xl font-semibold mb-4">Account Details</h2>
-                <p><span className="font-bold">Username:</span> {userDetails.name}</p>
+                <p><span className="font-bold">Name:</span> {userDetails.name}</p>
+                <p><span className="font-bold">Gender:</span> {userDetails.gender}</p>
                 <p><span className="font-bold">Email:</span> {userDetails.email}</p>
+                <p><span className="font-bold">Birthday:</span> {userDetails.birthdate}</p>
             </div>
 
             <div className="flex-1 bg-white shadow-lg rounded-lg p-8 space-y-4">
