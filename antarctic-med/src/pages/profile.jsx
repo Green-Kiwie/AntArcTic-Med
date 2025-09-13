@@ -30,6 +30,8 @@ export default function ProfilePage({ user }){
 
     async function deleteAccount() {
         try{
+            const confirmed = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+            if(!confirmed) return;
             await deleteUser();
             alert("Your account has been successfully deleted.");
         }
