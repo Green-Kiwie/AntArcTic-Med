@@ -1,6 +1,6 @@
 import DesignedButton from "../../../components/DesignedButton";
 import {getMedian} from "../../globalLogicHelpers/MathUtils"
-import { playSound, sounds } from "../../sounds/sounds.js";
+import { playSound, sounds } from "../../sounds/sounds.jsx";
 
 export function EndGameButton({context}){
     return (
