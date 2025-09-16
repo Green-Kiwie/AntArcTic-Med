@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { StyleSheet, Text, View } from 'react-native';
+import { Text } from "react-native"
 
 // timeLimitInSeconds is a integer in seconds
 // onEnd (function) does not need to be passed in as args
@@ -45,7 +45,9 @@ function GameTimer({timeLimitInSeconds, onEnd}) {
     }
     else {
         return (
-            <Text>{formatTime(timeLeft)}</Text>
+            <Text style={{ fontSize: 32, fontWeight: 'bold', marginBottom: 10 }}>
+                {formatTime(timeLeft)}
+            </Text>
         );
     }
     

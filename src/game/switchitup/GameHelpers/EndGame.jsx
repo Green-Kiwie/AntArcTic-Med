@@ -6,7 +6,7 @@ export function EndGameButton({context}){
         <DesignedButton
             onPress={handleEndGameClick(context)}
             content="End Game"
-            colorClass="bg-stone-300"
+            colorClass="bg-stone-300"   
             hoverColorClass="hover:bg-stone-600"
         />
     );

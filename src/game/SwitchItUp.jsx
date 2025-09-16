@@ -4,6 +4,8 @@ import StartScreen from "./switchitup/StartScreen";
 import GameField from "./switchitup/GameField";
 import Metrics from "./switchitup/Metrics";
 
+import { View } from "react-native"
+
 export default function SwitchItUp({ user }) {
 
     const [metrics, setMetrics] = useState(getMetrics);
@@ -18,7 +20,9 @@ function getCorrespondingGameComponent(gameRunning, user, metrics, setMetrics, s
         return <StartScreen setGameRunning={setGameRunning} />;
     } else if (gameRunning === "SwitchItUp Game") {
         return (
-            <GameField setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} user={user}/>
+            <View style={{flex: 1 }}>
+                <GameField setGameRunning={setGameRunning} metrics={metrics} setMetrics={setMetrics} user={user}/>
+            </View>
         );
     } else if (gameRunning === "metrics") {
         return (

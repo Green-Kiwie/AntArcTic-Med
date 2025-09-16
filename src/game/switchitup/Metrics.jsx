@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
-import DesignedButton from "../../components/DesignedButton";
-import { View, Text, StyleSheet } from 'react-native';
+import DesignedButton from "../../components/DesignedButton"
 
 /**
  * Sends the metrics.
@@ -97,39 +96,22 @@ export default function Metrics({ setGameRunning, metrics, setMetrics, user }) {
     console.log(metrics);
 
     return (
-        <View>
-            <Text className="text-2xl font-bold mb-4">Game Metrics</Text>
-        <View style={styles.listContainer}>
-        {Object.entries(displayMetrics).map(([key, value]) => (
-            <Text key={key} style={styles.listItem}>
-            <Text style={styles.boldText}>{key}:</Text>
-            {value}
-            </Text>
-        ))}
-        </View>
+        <div>
+            <h2 className="text-2xl font-bold mb-4">Game Metrics</h2>
+            <ul className="space-y-2">
+                {Object.entries(displayMetrics).map(([key, value]) => (
+                    <li key={key} className="text-lg">
+                        <strong>{key}:</strong> {value}
+                    </li>
+                ))}
+            </ul> 
 
             {/* Example button to update game state */}
             <DesignedButton 
-                onPress={() => resetGame()}
+                onClick={() => resetGame()}
                 content="Play Again"
             >
             </DesignedButton>
-        </View>
+        </div>
     )
 }
-
-const styles = StyleSheet.create({
-  listContainer: {
-    // This provides the vertical spacing equivalent to `space-y-2`
-    // You can adjust the marginVertical to change the spacing
-    flexDirection: 'column',
-    gap: 8, // A modern way to add spacing between items
-  },
-  listItem: {
-    fontSize: 18, // Equivalent to `text-lg`
-    lineHeight: 24, // Optional: for better readability
-  },
-  boldText: {
-    fontWeight: 'bold',
-  },
-});

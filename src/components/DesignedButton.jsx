@@ -15,11 +15,19 @@ const DesignedButton = ({
   // A simple mapping for colors and sizes
   const buttonColors = {
     'bg-sky-400': '#38bdf8',
+    'text-white': '#ffffff',
+    'text-sky-800': '#075985',
+    'bg-sky-400': '#38bdf8',
+    'bg-stone-300': '#d4d4d4',
+    'bg-stone-600': '#525252',
   };
 
   const textColors = {
     'text-white': '#ffffff',
     'text-sky-800': '#075985',
+    'bg-sky-400': '#38bdf8',
+    'bg-stone-300': '#d4d4d4',
+    'bg-stone-600': '#525252',
   };
 
   const fontSizes = {
@@ -47,7 +55,7 @@ const DesignedButton = ({
   return (
     <TouchableOpacity
       id={id}
-      onPress={(event) => onPress(event, onPressParameters)}
+      onPress={(event) => onPress?.(event, onPressParameters)}
       disabled={disabled}
       style={buttonStyle}>
       <Text style={textStyle}>{content}</Text>

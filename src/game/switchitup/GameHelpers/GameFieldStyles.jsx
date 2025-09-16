@@ -4,12 +4,13 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     // Style for the main container of your GameField component
     mainContainer: {
-        flex: 1, // Make it take up all available vertical space in its parent
-        alignItems: 'center', // Center content (like the grid) horizontally
+        flex: 1,
+        width: '100%',
+        height: 500,
+        paddingHorizontal: 16, // add horizontal padding
+        justifyContent: 'flex-start', // or 'center' if you want vertical centering
+        alignItems: 'center', // center children horizontally
         // backgroundColor: 'lightblue', // For debugging: see its bounds
-        paddingHorizontal: 0, // Ensure no default horizontal padding
-        marginHorizontal: 0,  // Ensure no default horizontal margin
-        width: '100%', // Ensure it expands to full width
     },
     // Style for the container that holds the grid of buttons
     buttonGridContainer: {
@@ -45,5 +46,8 @@ export default StyleSheet.create({
     // Styles for the End Game button's container if needed
     endGameButtonContainer: {
         marginTop: 20,
-    }
+        minHeight: 80,             // ensures container is tall enough
+        justifyContent: 'center',  // vertically center the button
+        alignItems: 'center',      // horizontally center the button
+    },
 });

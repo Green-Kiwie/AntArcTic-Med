@@ -1,5 +1,5 @@
 import { useEffect } from "react"; 
-import { View, Text } from 'react-native';
+import { TouchableWithoutFeedback, View, Text } from 'react-native';
 
 import {EndGameButton, endGame} from "./GameHelpers/EndGame";
 import {handleViewContainerClick, resetGameState} from "./GameHelpers/UpdateSelections";
@@ -28,10 +28,8 @@ export default function GameField({ setGameRunning, setMetrics, user }) {
     }, [context.gameInitialized, context]);
 
     return (
-        <View style={gameFieldStyles.mainContainer}
-              onClick={(e) => handleViewContainerClick(e, context)}
-        >
-
+        <TouchableWithoutFeedback onPress={() => handleViewContainerClick(context)}>
+        <View style={[gameFieldStyles.mainContainer]}>
             <GameTitleText />
 
             <GameTimerWithText context={context}/>
@@ -39,10 +37,12 @@ export default function GameField({ setGameRunning, setMetrics, user }) {
             <PromptMessageText context={context} />
 
             <CardMatrix context={context} />
-            
+
             <EndGameComponent context={context} />
 
         </View>
+        </TouchableWithoutFeedback>
+
     );
 }
 
@@ -69,4 +69,5 @@ function PromptMessageText({context}){
 function CardMatrix({context}){
     return context.cardMatrix.length > 0 && <RenderCardMatrix cardMatrix={context.cardMatrix} context={context}/>
 }
+
 

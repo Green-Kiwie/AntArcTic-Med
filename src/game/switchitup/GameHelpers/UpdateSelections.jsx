@@ -1,34 +1,33 @@
 import {selectCurrentTask, ColorIdEqual, ImageIdEqual, selectCardValues} from "./GameLogicHelpers"; 
 
-export function handleViewContainerClick(e, context){
-    if (e.target.closest('button')) return;
+export function handleViewContainerClick(context) {
     updateInvalidSelection(context);
 }
 
-export function handleButtonClick(parameters) {
-    const {id: buttonId, row: clickedRow, col: clickedCol, context} = parameters;
 
-    //handle invalid button clicks
+export function handleButtonClick({ id: buttonId, row: clickedRow, col: clickedCol, context }) {
+    // Check invalid button ID
     if (isInvalidButtonClick(buttonId)) {
         updateInvalidSelection(context); // Call this if invalid ID is an invalid selection
         return; // Stop if the ID format is unexpected
     }
 
-    let isClickCorrect = context.correctCards.some(([row, col]) => row === clickedRow && col === clickedCol);
+    const { correctCards, setClickedButtons } = context;
 
-    addButtonToClickedSet(context, buttonId); 
+    // Add this button to clicked set
+    setClickedButtons(prev => new Set(prev).add(buttonId));
+
+    // Check if clicked button is correct
+    const isClickCorrect = correctCards.some(([row, col]) => row === clickedRow && col === clickedCol);
+
+    // Update time & streak
     updateTimeBetweenSelection(context);
     updateStreak(context, isClickCorrect);
 
     if (isClickCorrect) {
         updateCorrectSelection(context, buttonId);
-
     } else {
-        const clickContext = {
-            clickedRow,
-            clickedCol,
-            correctCards: context.correctCards,
-        };
+        const clickContext = { clickedRow, clickedCol, correctCards };
         updateWrongSelection(context, clickContext, buttonId);
     }
 }
