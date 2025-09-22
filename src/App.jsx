@@ -4,6 +4,7 @@ import HomeScreen from './components/screens/HomeScreen';
 import ProfileScreen from './components/screens/ProfileScreen';
 import SettingsScreen from './components/screens/SettingsScreen';
 import GamesScreen from './components/screens/GamesScreen';
+import SwitchItUpScreen from './components/screens/SwitchItUpScreen';
 
 const renderScreen = (currentTab, onTabPress) => {
   switch (currentTab) {
@@ -15,6 +16,8 @@ const renderScreen = (currentTab, onTabPress) => {
       return <GamesScreen onTabPress={onTabPress}/>
     case 'Settings':
       return <SettingsScreen onTabPress={onTabPress}/>;
+    case 'SwitchItUp':
+      return <SwitchItUpScreen onTabPress={onTabPress}/>;
     default:
       return <HomeScreen onTabPress={onTabPress} />;
   }

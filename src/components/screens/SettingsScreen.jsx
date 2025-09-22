@@ -2,9 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import HomeButton from '../buttons/HomeButton';
 
-import SwtichItUp from '../../game/SwitchItUp';
-import SwitchItUp from '../../game/SwitchItUp';
-
 const SettingsScreen = ( { onTabPress } ) => {
   return (
     <View style={styles.screenContainer}>
@@ -13,7 +10,6 @@ const SettingsScreen = ( { onTabPress } ) => {
           <HomeButton onPress={() => onTabPress('Home')} backgroundImage={require('../../assets/icons/house-solid-full.png')}/>
         </View>
       </View>
-          <SwitchItUp/>
     </View>
   );
 };

@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
 import HomeButton from '../buttons/HomeButton';
 
+import SwtichItUp from '../../game/SwitchItUp';
+
 const Button = ({ title, onPress, backgroundImage }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.buttonContainer}>
@@ -22,8 +24,7 @@ const SettingsScreen = ( { onTabPress } ) => {
             <HomeButton onPress={() => onTabPress('Home')} backgroundImage={require('../../assets/icons/house-solid-full.png')}/>
         </View>
       </View>
-            <Button onPress={() => onTabPress('SwitchItUp')} title="Switch It Up" backgroundImage={require('../../assets/images/switchItUp_button.png')}/>
-            <Button onPress={() => onTabPress('Home')} title="" backgroundImage={require('../../assets/images/matchIt_button.png')}/>
+          <SwtichItUp/>
     </View>
   );
 };

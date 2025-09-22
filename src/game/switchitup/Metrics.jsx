@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import DesignedButton from "../../components/DesignedButton"
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 /**
  * Sends the metrics.
@@ -96,22 +97,56 @@ export default function Metrics({ setGameRunning, metrics, setMetrics, user }) {
     console.log(metrics);
 
     return (
-        <div>
-            <h2 className="text-2xl font-bold mb-4">Game Metrics</h2>
-            <ul className="space-y-2">
+        <View style={styles.container}>
+            <Text style={styles.heading}>Game Metrics</Text>
+            <View style={styles.metricsList}>
                 {Object.entries(displayMetrics).map(([key, value]) => (
-                    <li key={key} className="text-lg">
-                        <strong>{key}:</strong> {value}
-                    </li>
+                    <View key={key} style={styles.listItem}>
+                        <Text style={styles.listItemText}>
+                            <Text style={styles.strongText}>{key}:</Text> {value}
+                        </Text>
+                    </View>
                 ))}
-            </ul> 
+            </View>
 
-            {/* Example button to update game state */}
-            <DesignedButton 
-                onClick={() => resetGame()}
-                content="Play Again"
-            >
-            </DesignedButton>
-        </div>
+            {/* Use the React Native button component */}
+            <DesignedButton onPress={resetGame} content="Play Again" />
+        </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 20,
+    },
+    heading: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 16,
+    },
+    metricsList: {
+        marginBottom: 20,
+    },
+    listItem: {
+        marginBottom: 8,
+    },
+    listItemText: {
+        fontSize: 18,
+    },
+    strongText: {
+        fontWeight: 'bold',
+    },
+    button: {
+        backgroundColor: '#6200ee',
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+        alignItems: 'center',
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+});
