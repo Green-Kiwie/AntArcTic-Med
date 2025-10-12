@@ -66,27 +66,23 @@ const GameTeam = {
     members: [
         {
             name: "Jeremiah Lillion",
-            role: "Game Lead",
+            role: "UI/UX Lead",
             imageUrl: `${process.env.PUBLIC_URL}/images/team/jeremiah.jpg`
         },
         {
             name: "Anish Venkatesalu",
-            role: "Game Team Member",
+            role: "Co Game Development Lead",
             imageUrl: `${process.env.PUBLIC_URL}/images/team/anish.jpg`
         },
-        {
-            name: "Logan Mifflin",
-            role: "Game Team Member",
-            imageUrl: `${process.env.PUBLIC_URL}/images/team/logan.jpg`
-        },
+       
         {
             name: "Siddharth Sundar",
-            role: "Game Team Member",
+            role: "Cloud Solutions Lead",
             imageUrl: `${process.env.PUBLIC_URL}/images/team/siddharth.jpg`
         },
         {
             name: "Vaibhav Satish",
-            role: "Game Team Member",
+            role: "Co Game Development Lead",
             imageUrl: `${process.env.PUBLIC_URL}/images/team/vaibhav.jpg`
         },
     ]
@@ -102,21 +98,27 @@ const WebsiteTeam = {
         },
         {
             name: "Rigel de Souza",
-            role: "Website Team Member",
+            role: "Website Developer",
             imageUrl: `${process.env.PUBLIC_URL}/images/team/rigel.jpg`
         },
     ]
 }
 
+const ResearchTeam = {
+    name: "Logan Mifflin",
+    role: "Research and Developement Lead",
+    imageUrl: `${process.env.PUBLIC_URL}/images/team/logan.jpg`
+}
+
 const CSPresident = {
     name: "Kierann Chong",
-    role: "President",
+    role: "Co President",
     imageUrl: `${process.env.PUBLIC_URL}/images/team/kierann.jpg`
 }
 
 const BioPresident = {
     name: "Arnav Chandan",
-    role: "President",
+    role: "Co President",
     imageUrl: `${process.env.PUBLIC_URL}/images/team/arnav.jpg`
 }
 
@@ -128,7 +130,7 @@ const Treasurer = {
 
 const SocialMediaLead = {
     name: "Emma Chen",
-    role: "Social Media",
+    role: "Social Media Lead",
     imageUrl: `${process.env.PUBLIC_URL}/images/team/emma.jpg`
 }
 
@@ -139,11 +141,12 @@ const executiveTeam = {
         BioPresident,
         Treasurer,
         SocialMediaLead,
+        ResearchTeam,
     ]
 }
 
 const teams = [
     executiveTeam,
     WebsiteTeam,
-    GameTeam,
+    GameTeam
 ];
