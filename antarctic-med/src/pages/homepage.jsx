@@ -150,7 +150,7 @@ function ClubLogoAndName(){
                     />
         </Link>
         <h1 className={"font-bold text-4xl text-black my-8"}>
-            ANTArtiqc-Med @ UCI</h1>
+            MedTech @ UCI</h1>
     </div>
     ) 
     

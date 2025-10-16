@@ -1,11 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { signInWithRedirect } from "aws-amplify/auth";
 
-export default function Navbar({ user, userLoading, signOut }) {
+export default function Navbar() {
     const location = useLocation();
     const currentPath = location.pathname;
 
-    if(userLoading) return null;
 
     return (
         <nav className="absolute top-0 w-full z-10">
@@ -18,10 +16,10 @@ export default function Navbar({ user, userLoading, signOut }) {
                         Home
                     </Link>
                     <Link
-                        to="/game"
-                        className={`hover:text-blue-600 ${currentPath === '/game' ? 'font-bold' : ''}`}
+                        to="/projects"
+                        className={`hover:text-blue-600 ${currentPath === '/projects' ? 'font-bold' : ''}`}
                     >
-                        Game
+                        Projects and Partnerships
                     </Link>
                     <Link
                         to="/about"
@@ -30,38 +28,11 @@ export default function Navbar({ user, userLoading, signOut }) {
                         About
                     </Link>
                     <Link
-                        to="/metrics"
-                        className={`hover:text-blue-600 ${currentPath === '/metrics' ? 'font-bold' : ''}`}
+                        to="/contact"
+                        className={`hover:text-blue-600 ${currentPath === '/contact' ? 'font-bold' : ''}`}
                     >
-                        Metrics
+                        Contact Us
                     </Link>
-                    {/* <Link
-                        to="/pet"
-                        className={`hover:text-blue-600 ${currentPath === '/metrics' ? 'font-bold' : ''}`}
-                    >
-                        Pet
-                    </Link> */}
-                    {!user && (
-                        <button
-                            onClick={() => signInWithRedirect()}
-                            className="hover:text-blue-600"
-                            style={{ background: "none", border: "none", cursor: "pointer" }}
-                        >
-                            Sign In
-                        </button>
-                    )}
-                    {user && (
-                        <>
-                            <Link to="/profile" className="hover:text-blue-600">Profile</Link>
-                            <button
-                                onClick={signOut}
-                                className="hover:text-blue-600"
-                                style={{ background: "none", border: "none", cursor: "pointer" }}
-                            >
-                                Sign Out
-                            </button>
-                        </>
-                    )}
                 </div>
             </div>
         </nav>
