@@ -1,25 +1,16 @@
-import DesignedButton from "../components/DesignedButton";
-import ContactForm from "./form";
-
-function ContactButton() {
-    const link = "mailto:medtechatuci@gmail.com";
+import ContactForm from "../components/form";
 
 
-    return (
-        <div className="flex h-screen items-center justify-center">
-         <DesignedButton onClick={() => {window.open(link, '_blank', 'noreffer');}} content = {"Contact Us!"}>
-         </DesignedButton>
 
-        </div>  
-       
-    );
-}
+
 
 export default function Contact(){
     return (
         <>
-            <ContactButton />
-            <ContactForm />
+            <div className="flex h-screen items-center justify-center">
+                <ContactForm />
+            </div>
+            
         </>
     )
     

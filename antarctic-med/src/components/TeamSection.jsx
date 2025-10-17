@@ -71,7 +71,7 @@ const GameTeam = {
         },
         {
             name: "Anish Venkatesalu",
-            role: "Co Game Development Lead",
+            role: "Sweat",
             imageUrl: `${process.env.PUBLIC_URL}/images/team/anish.jpg`
         },
        
@@ -82,8 +82,13 @@ const GameTeam = {
         },
         {
             name: "Vaibhav Satish",
-            role: "Co Game Development Lead",
+            role: "Game Developer",
             imageUrl: `${process.env.PUBLIC_URL}/images/team/vaibhav.jpg`
+        },
+        {
+            name: "Parth Kansal",
+            role: "Game Developer",
+            imageUrl: `${process.env.PUBLIC_URL}/images/team/parth.jpg`
         },
     ]
 }
