@@ -65,13 +65,8 @@ const GameTeam = {
     name: "Game Team",
     members: [
         {
-            name: "Jeremiah Lillion",
-            role: "UI/UX Lead",
-            imageUrl: `${process.env.PUBLIC_URL}/images/team/jeremiah.jpg`
-        },
-        {
             name: "Anish Venkatesalu",
-            role: "Sweat",
+            role: "Game Development Lead",
             imageUrl: `${process.env.PUBLIC_URL}/images/team/anish.jpg`
         },
        
@@ -102,9 +97,9 @@ const WebsiteTeam = {
             imageUrl: `${process.env.PUBLIC_URL}/images/team/ashley.jpg`
         },
         {
-            name: "Rigel de Souza",
-            role: "Website Developer",
-            imageUrl: `${process.env.PUBLIC_URL}/images/team/rigel.jpg`
+            name: "Jeremiah Lillion",
+            role: "UI/UX Lead",
+            imageUrl: `${process.env.PUBLIC_URL}/images/team/jeremiah.jpg`
         },
     ]
 }
@@ -149,6 +144,7 @@ const executiveTeam = {
         ResearchTeam,
     ]
 }
+
 
 const teams = [
     executiveTeam,

@@ -2,7 +2,7 @@
 // Example use:
 // <Button content="Go to about" link="/about" />
 
-function DesignedButton({id, content, onClick, onClickParameters, disable,
+function DesignedButton({id, content, onClick, onClickParameters, disabled, type = "button",
                             colorClass = "bg-sky-400", hoverColorClass = "hover:bg-sky-400", 
                             size = 'base', className = "default"}) {
 
@@ -12,13 +12,17 @@ function DesignedButton({id, content, onClick, onClickParameters, disable,
             px-8 py-4 inline-block text-center shadow-lg
             font-semibold text-${size} transition duration-300 ease-in-out transform hover:scale-105`;
     }
+    if (onClick == null) {
+        onClick = () => {};
+    }
     return (
         <button
             // href={link}
             id = {id}
             target="_blank" rel="noreferrer"
             onClick={(event) => onClick(event, onClickParameters)} // To get the id for search for correct card
-            disabled={disable}
+            disabled={disabled}
+            type ={type}
             className={className}
             style={{ borderRadius: "25px" }}
         >
