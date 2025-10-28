@@ -16,16 +16,16 @@ export default function ContactForm() {
     <div className="flex flex-row gap-10 items-start bg-sky-600 rounded-[32px] font-bold shadow-lg shadow-black/30 px-8 py-6">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-6 text-white w-[600px]"
+        className="flex flex-col gap-6 w-[600px]"
       >
         <div>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name" className='text-white'>Name:</label>
           <input id="name" type="text" name="name" className="w-full p-2 rounded-md" />
           <ValidationError prefix="Name" field="name" errors={state.errors} />
         </div>
 
         <div>
-          <label htmlFor="email">Email Address:</label>
+          <label htmlFor="email" className='text-white'>Email Address:</label>
           <input id="email" type="email" name="email" className="w-full p-2 rounded-md" />
           <ValidationError prefix="Email" field="email" errors={state.errors} />
         </div>
