@@ -5,8 +5,9 @@ export const sounds = {
   success: require("./sounds/success.wav"),
   fail: require("./sounds/fail.wav"),
   gameover: require("./sounds/gameover.wav"),
+  music: require("./sounds/lofi_loop.mp3"),
 };
-const soundsToPreload = ["success", "fail", "gameover"]
+const soundsToPreload = ["success", "fail", "gameover", "music"]
 
 function preloadSoundsWeb(soundList) {
   if (Platform.OS === "web") {

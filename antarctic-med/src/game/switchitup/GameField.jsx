@@ -9,11 +9,27 @@ import RenderCardMatrix from "./GameHelpers/RenderMatrix";
 import GameTimer from "../globalLogicHelpers/GameTimer"; // Assuming this is also RN-Web compatible if it has UI
 import gameFieldStyles from "./GameHelpers/GameFieldStyles";
 import useInitializeContext from "./GameHelpers/GameFieldContext";
+import { playSound, sounds } from "../sounds/sounds.jsx"; // For music, can shorten if needed. 
 
 export default function GameField({ setGameRunning, setMetrics, user }) {
 
     const context = useInitializeContext(setGameRunning, setMetrics, user)
     
+    useEffect(() => {
+        const audio = new Audio(sounds.music);
+        audio.loop = true;
+        audio.volume = 0.3; // Adjust volume (0.0 to 1.0)
+        
+        audio.play().catch(err => {
+            console.log("Audio autoplay prevented:", err);
+        });
+
+        return () => {
+            audio.pause();
+            audio.currentTime = 0;
+        };
+    }, []); // Empty array = runs once when GameField mounts
+
     useEffect(() => {
         if (context.promptMessage === '') {
             resetGameState(context);
