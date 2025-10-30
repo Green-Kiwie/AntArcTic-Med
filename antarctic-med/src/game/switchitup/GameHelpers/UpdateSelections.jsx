@@ -1,5 +1,5 @@
 import {selectCurrentTask, ColorIdEqual, ImageIdEqual, selectCardValues} from "./GameLogicHelpers"; 
-import { playSound, sounds } from "../../sounds/sounds.js";
+import { playSound, sounds } from "../../sounds/sounds.jsx";
 
 export function handleViewContainerClick(e, context){
     if (e.target.closest('button')) return;
