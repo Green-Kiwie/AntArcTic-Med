@@ -5,7 +5,7 @@ export const sounds = {
   success: require("./sounds/success.wav"),
   fail: require("./sounds/fail.wav"),
   gameover: require("./sounds/gameover.wav"),
-  music: require("./sounds/lofi_loop.mp3"),
+  music: require("./sounds/zane_rigel_composition.mp3"),
 };
 const soundsToPreload = ["success", "fail", "gameover", "music"]
 

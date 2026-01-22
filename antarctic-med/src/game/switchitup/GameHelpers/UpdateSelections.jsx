@@ -94,7 +94,6 @@ function updateCorrectSelection(context, buttonId) {
     }));
 
     if (isRoundComplete(newCount, context)) {
-        playSound(sounds.success);
         resetGameState(context);
         context.setNumOfCorrect(0);
     }
